@@ -14,7 +14,7 @@ export default function Featured({ post }: { post: Post }) {
         href={"/stories/" + encodeURIComponent(blog_id)}
         className=" text-white flex flex-col gap-2"
       >
-        <h2 className="lg:text-2xl md:text-xl text-lg font-bold bg-white text-black p-2 py-1 text-center rounded-sm">
+        <h2 className="lg:text-xl text-lg  font-bold text-white p-2 py-1 text-center rounded-sm">
           Featured writeup
         </h2>
         <hr className="opacity-40" />

@@ -17,12 +17,12 @@ export default function Navbar() {
         <Link className="hover:underline" href="/stories">
           stories.
         </Link>
-        <Link className="hover:underline" href="/catagories">
+        {/* <Link className="hover:underline" href="/catagories">
           catagories.
         </Link>
         <Link className="hover:underline" href="/write">
           write.
-        </Link>
+        </Link> */}
       </div>
     </nav>
   );

@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.caption{
-    color: #ffffff84;
-    size: 12px;
-    font-style: italic;
-    text-align: center;
+.caption {
+  color: #ffffff84;
+  size: 12px;
+  font-style: italic;
+  text-align: center;
+}
+::-webkit-scrollbar {
+  display: none;
 }

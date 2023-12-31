@@ -27,7 +27,7 @@ export default async function PostComponent({ post }: Props) {
           <span className="h-[45%] opacity-50 text-sm w-full text-ellipsis overflow-hidden line-clamp-4">
             {post.desc}
           </span>
-          <span>{moment(post.created_time).format("D MMM,YYYY")}</span>
+          <span>{moment(post.last_edited_time).format("D MMM,YYYY")}</span>
           <span className="flex flex-wrap gap-1 text-sm">
             {post.tags!.slice(0, 2).map((post, idx) => {
               return (

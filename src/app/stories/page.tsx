@@ -6,6 +6,7 @@ import { capitaliseFirst } from "@/components/services/strings";
 import { tw } from "@/components/services/tailwind";
 import Featured from "./(featured)";
 import StoryTop from "@/components/stories/StoryTop";
+import { randomInteger } from "@/components/services/random";
 
 const nc = new NotionClient();
 const TAGS = {
@@ -35,7 +36,7 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
       <StoryTop />
       {featured?.[0] && (
         <div className="py-6">
-          <Featured post={featured?.[1]} />
+          <Featured post={featured?.[randomInteger(featured.length)]} />
         </div>
       )}
       <div

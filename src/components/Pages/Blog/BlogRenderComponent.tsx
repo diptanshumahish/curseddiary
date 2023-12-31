@@ -7,7 +7,6 @@ import RenderBlock from "@/components/NotionRender/RenderBlock";
 import moment from "moment";
 import { Calendar, Clock } from "lucide-react";
 import ReadTimeClient from "./ReadTimeClient";
-import Link from "next/link";
 export default async function BlogRenderComponent(props: ServerProps<"id">) {
   const [blog, { title, url, desc, date }] = await Promise.all([
     getBlog(props.params.id),
