@@ -56,7 +56,7 @@ export default function Featured({ post }: { post: Post }) {
             alt={post.title ?? "Image"}
             height={300}
             width={200}
-            className="w-[30%] h-auto aspect-[4/3] object-cover border border-white border-opacity-40 rounded-sm"
+            className="lg:w-[30%] w-full h-auto aspect-[4/3] object-cover border border-white border-opacity-40 rounded-sm"
           />
         </div>
       </Link>

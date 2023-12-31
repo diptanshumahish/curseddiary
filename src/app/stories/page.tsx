@@ -10,10 +10,9 @@ import StoryTop from "@/components/stories/StoryTop";
 const nc = new NotionClient();
 const TAGS = {
   default:
-    "text-md border border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm text-white ",
-  active:
-    "bg-white   hover:bg-opacity-80 text-slate-800 active:bg-opacity-20  ",
-  inactive: "text-slate-700",
+    "text-md border border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  ",
+  active: "bg-white text-black hover:bg-opacity-80  active:bg-opacity-20  ",
+  inactive: "text-white",
 };
 export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
   const [tags, featured] = await Promise.all([
@@ -39,13 +38,14 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
           <Featured post={featured?.[1]} />
         </div>
       )}
-      <div className="flex gap-4 flex-wrap py-2 overflow-x-scroll" id="stories">
+      <div
+        className="flex gap-4 flex-wrap py-2 text-white overflow-x-scroll"
+        id="stories"
+      >
         <a href="/stories#stories">
           <span
             className={
-              TAGS.default +
-              " " +
-              (activeTag === 0 ? TAGS.active : TAGS.inactive)
+              TAGS.default + (activeTag === 0 ? TAGS.active : TAGS.inactive)
             }
           >
             All
@@ -58,7 +58,6 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
                 <span
                   className={
                     TAGS.default +
-                    " " +
                     (activeTag === index + 1 ? TAGS.active : TAGS.inactive)
                   }
                 >

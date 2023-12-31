@@ -9,7 +9,7 @@ import { Calendar, Clock } from "lucide-react";
 import ReadTimeClient from "./ReadTimeClient";
 import Link from "next/link";
 export default async function BlogRenderComponent(props: ServerProps<"id">) {
-  const [blog, { title, url, tags, desc, date }] = await Promise.all([
+  const [blog, { title, url, desc, date }] = await Promise.all([
     getBlog(props.params.id),
     getBlogData(props.params.id),
   ]);
