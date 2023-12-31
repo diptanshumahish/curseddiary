@@ -14,13 +14,13 @@ export default function Featured({ post }: { post: Post }) {
         href={"/stories/" + encodeURIComponent(blog_id)}
         className=" text-white flex flex-col gap-2"
       >
-        <h2 className="text-2xl font-bold bg-white text-black p-2 py-1 text-center rounded-sm">
+        <h2 className="lg:text-2xl md:text-xl text-lg font-bold bg-white text-black p-2 py-1 text-center rounded-sm">
           Featured writeup
         </h2>
         <hr className="opacity-40" />
-        <div className="flex lg:flex-row flex-col-reverse justify-between items-center">
+        <div className="flex lg:flex-row flex-col-reverse lg:gap-0 gap-4 justify-between items-center">
           <div className="flex flex-col gap-4 lg:max-w-[60%]">
-            <h1 className="text-3xl">{post.title}</h1>
+            <h1 className="lg:text-3xl md:text-2xl text-xl">{post.title}</h1>
             <hr />
             <div className="flex flex-col gap-1">
               <span className="text-xs opacity-30">About the story</span>
