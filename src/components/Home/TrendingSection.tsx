@@ -11,9 +11,9 @@ export default async function TrendingSection() {
       <span className="text-gray-400">
         Here is a small set of stories that I think are safe for the normal
         audience to read. Feel free to explore more, maybe you can get soemthing
-        you definitely "didnot want". I guess you would love these stories as
-        new comers, This trending stories&apos; list keeps updating every few
-        days, so stay vigil haha
+        you definitely &quot;didnot want&quot;. I guess you would love these
+        stories as new comers, This trending stories&apos; list keeps updating
+        every few days, so stay vigil haha
       </span>
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-4 gap-2 lg:py-[2%]">
         {trending &&
