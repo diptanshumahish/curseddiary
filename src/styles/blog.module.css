@@ -1,0 +1,204 @@
+.blogContainer {
+  width: 100%;
+  height: fit-content;
+}
+.blogContainer .articleContainer {
+  min-width: 900px;
+  padding: 5% 5%;
+  -webkit-font-smoothing: antialiased;
+}
+.blogContainer article {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.blogContainer article img {
+  width: 100%;
+  object-position: center;
+  object-fit: cover;
+  margin: 1rem auto;
+  border-radius: 10px;
+}
+.blogContainer article img:first-of-type {
+  width: 100%;
+  max-height: 500px;
+  object-position: center;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.blogContainer article h1,
+.blogContainer article h2,
+.blogContainer article h3,
+.blogContainer article h4,
+.blogContainer article h5 {
+  color: white;
+}
+.blogContainer article h1,
+.blogContainer article h2 {
+  font-weight: 500;
+  width: 100%;
+  text-align: left;
+}
+.blogContainer article h1 {
+  font-size: 1.8rem;
+  text-align: left;
+}
+.blogContainer article h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: left;
+}
+.blogContainer article h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: left;
+  width: 100%;
+}
+.blogContainer article h1 {
+  font-size: 1.8rem;
+  text-align: left;
+}
+.blogContainer article h1:first-of-type {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: white;
+  margin: 2rem auto;
+  margin-bottom: 0.5rem;
+  line-height: 3.4rem;
+}
+.blogContainer article h5 {
+  font-size: 0.9rem;
+  color: grey;
+  font-weight: 300;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.blogContainer article p {
+  color: rgba(255, 255, 255, 0.365);
+  width: 100%;
+  padding: 10px 0;
+  line-height: 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.blogContainer article ul,
+.blogContainer article ol {
+  margin: 1rem auto;
+  color: #3a3b3b;
+  width: 100%;
+  line-height: 2rem;
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+.blogContainer article li {
+  margin: 0.7rem auto;
+  margin-left: 40px;
+}
+.blogContainer article ul {
+  list-style: disc;
+}
+.blogContainer article li > ul {
+  list-style: square;
+}
+.blogContainer article ol {
+  list-style: decimal;
+}
+.blogContainer article li > ol {
+  list-style: lower-alpha;
+}
+.blogContainer article details,
+.blogContainer article q,
+.blogContainer article section {
+  display: flex;
+  gap: 1rem;
+  margin: 1.6rem auto;
+  color: #1c3e51;
+  line-height: 2rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.5;
+  background-color: #f3f7f7;
+  padding: 2rem;
+  border-radius: 10px;
+}
+.blogContainer article table {
+  background-color: #fff;
+  border-bottom: none;
+  border-collapse: separate;
+  border-spacing: 0;
+  display: table;
+  table-layout: fixed;
+  min-width: auto;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+.blogContainer article table thead {
+  background-color: #fafaff;
+}
+.blogContainer article table thead td,
+.blogContainer article table thead th {
+  line-height: 1.5em;
+  padding: 10px 25px;
+  color: #343f44;
+  font-weight: 600;
+  border-left: 2px solid #e5eff5;
+  border-bottom: 2px solid #e5eff5;
+  border-top: 2px solid #e5eff5;
+}
+.blogContainer article table thead td:last-child,
+.blogContainer article table thead th:last-child {
+  border-right: 2px solid #e5eff5;
+  border-radius: 0 10px 0 0;
+}
+.blogContainer article table thead td:first-child,
+.blogContainer article table thead th:first-child {
+  border-radius: 10px 0 0 0;
+}
+.blogContainer article table tbody tr:last-of-type td:first-of-type {
+  border-radius: 0 0 0 10px;
+}
+.blogContainer article table tbody tr:last-of-type td:last-of-type {
+  border-radius: 0 0 10px 0;
+}
+.blogContainer article table tbody th,
+.blogContainer article table tbody td {
+  padding: 20px 25px;
+  border-left: 2px solid #e5eff5;
+  border-bottom: 2px solid #e5eff5;
+}
+.blogContainer article table tbody th:last-child,
+.blogContainer article table tbody td:last-child {
+  border-right: 2px solid #e5eff5;
+}
+@media screen and (max-width: 800px) {
+  .blogContainer .articleContainer {
+    min-width: 342px;
+    margin: 1rem auto;
+  }
+  .article img {
+    margin: 1rem auto;
+  }
+  .article h1:first-of-type {
+    font-size: 2rem;
+    line-height: 2.3rem;
+    margin: 1rem auto;
+  }
+  .blogContainer article ol {
+    margin-left: 0px;
+  }
+  .blogContainer article li {
+    margin-left: 20px;
+  }
+  .article table thead th,
+  .article table thead td {
+    padding: 15px 8px;
+  }
+  .article table tbody td,
+  .article table tbody th {
+    word-break: break-word;
+    padding: 15px 10px;
+  }
+}
