@@ -2,11 +2,11 @@ import { isFullPage } from "@notionhq/client";
 import NotionClient from "@/components/services/notion-client";
 
 const nc = new NotionClient();
-export async function getBlog(id: string) {
+export async function getBlog(id) {
   return await nc.getBlocks(id);
 }
 
-export async function getBlogData(id: string) {
+export async function getBlogData(id) {
   const data = {
     title: "",
     url: "",
@@ -22,7 +22,7 @@ export async function getBlogData(id: string) {
 
   if (!post) return data;
   if (!isFullPage(post)) return data;
-  console.log(post);
+
   // title
   const name = post.properties["Name"];
   if (name.type !== "title") data.title = "";
@@ -35,14 +35,10 @@ export async function getBlogData(id: string) {
   else data.url = post.cover.external.url;
   //tags
   const tags = post.properties["Tags"].multi_select;
-  const tagArray: string[] = tags.map((tag) => tag.name);
+
+  const tagArray = tags.map((tag) => tag.name);
   data.tags = tagArray;
 
-  //avatar and image
-  // if (post.properties["Person"] !== undefined) {
-  //   data.user.name = post.properties["Person"].created_by.name;
-  //   data.user.image = post.properties["Person"].created_by.avatar_url;
-  // }
   if (post.properties["Description"] !== undefined) {
     data.desc = post.properties["Description"].rich_text[0].plain_text;
   }
