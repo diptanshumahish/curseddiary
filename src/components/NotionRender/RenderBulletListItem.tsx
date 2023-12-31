@@ -22,7 +22,6 @@ export default async function RenderBulletListItem({ block }: Props) {
                 {i.plain_text}
               </span>
             ))}
-            {/* @ts-expect-error Server Component */}
             <RenderChildren block={block} />
           </li>
         );
@@ -35,7 +34,6 @@ export default async function RenderBulletListItem({ block }: Props) {
                 {i.plain_text}
               </span>
             ))}
-            {/* @ts-expect-error Server Component */}
             <RenderChildren block={block} />
           </li>
         );
