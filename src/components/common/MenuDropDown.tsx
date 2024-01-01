@@ -18,7 +18,7 @@ export default function MenuDropDown({ height, onC }: Props) {
           height: height,
           opacity: height === "0vh" ? 0 : 1,
         }}
-        className="w-full transition-all duration-700  flex items-center lg:flex-row flex-col-reverse lg:justify-between justify-center lg:gap-0 gap-6 text-white lg:p-[2%] p-[5%] bg-theme-bg border border-white border-opacity-30 rounded-sm"
+        className="w-full transition-all lg:duration-700 duration-300 flex items-center lg:flex-row flex-col-reverse lg:justify-between justify-center lg:gap-0 gap-6 text-white lg:p-[2%] p-[5%] bg-theme-bg border border-white border-opacity-30 rounded-sm"
       >
         <div className="lg:flex hidden flex-col lg:w-[30%] justify-between h-full">
           <div className="flex  items-center   gap-4">
