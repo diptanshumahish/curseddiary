@@ -17,7 +17,6 @@ interface Props {
 export default async function RenderBlock({ blockMap }: Props) {
   let map: React.ReactElement[] = [];
   let list: React.ReactElement[] = [];
-  console.log(blockMap);
   for (let index = 0; index < blockMap.length; index++) {
     const block = blockMap[index];
     const after = blockMap.at(index + 1);

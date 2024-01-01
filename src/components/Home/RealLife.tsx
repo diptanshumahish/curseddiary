@@ -7,7 +7,10 @@ export default async function RealLife() {
   const nc = new NotionClient();
   const rPosts = await nc.getPosts(true, 0, "");
   return (
-    <div className="w-full px-[5%] py-[5%] text-white flex-col flex gap-4">
+    <div
+      id="reallife"
+      className="w-full px-[5%] py-[5%] text-white flex-col flex gap-4"
+    >
       <h2 className="text-3xl">Real Life events/ Folklores</h2>
       <span>
         get to know about the popular known stories that have been around the
