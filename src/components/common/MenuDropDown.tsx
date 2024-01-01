@@ -48,8 +48,8 @@ export default function MenuDropDown({ height, onC }: Props) {
             <h2 className="opacity-40 text-sm">NAVIGATION</h2>
             <Link href="/stories">Stories</Link>
             <Link href="/stories?tag=featured#stories">Featured</Link>
-            <Link href="/#reallife">Real Life</Link>
-            <Link href="/#reallife">Folklores</Link>
+            <Link href="/real-stories">Real Life</Link>
+            <Link href="/real-stories">Folklores</Link>
             <Link href="/">Home</Link>
           </div>
           <div className="flex flex-col gap-1">

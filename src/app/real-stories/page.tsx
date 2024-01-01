@@ -2,9 +2,7 @@ import PostComponent from "@/components/Post/PostComponent";
 import { ServerProps } from "../../contracts/ServerComponents";
 import NotionClient from "@/components/services/notion-client";
 import { capitaliseFirst } from "@/components/services/strings";
-import Featured from "./(featured)";
-import StoryTop from "@/components/stories/StoryTop";
-import { randomInteger } from "@/components/services/random";
+import RealTop from "@/components/real/RealTop";
 
 const nc = new NotionClient();
 const TAGS = {
@@ -14,10 +12,7 @@ const TAGS = {
   inactive: "text-white",
 };
 export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
-  const [tags, featured] = await Promise.all([
-    nc.getTags(false),
-    nc.getPosts(false, 0, "featured"),
-  ]);
+  const tags = await nc.getTags(true);
 
   const activeTag =
     typeof props.searchParams.tag === "undefined"
@@ -25,24 +20,20 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
       : tags.map((x) => x.name).indexOf(props.searchParams.tag) + 1;
 
   const posts = await nc.getPosts(
-    false,
+    true,
     0,
     activeTag === 0 ? "" : tags[activeTag - 1].name
   );
 
   return (
     <div className="px-[5%] flex flex-col gap-4 py-[3%] w-full">
-      <StoryTop />
-      {featured?.[0] && (
-        <div className="py-6">
-          <Featured post={featured?.[randomInteger(featured.length)]} />
-        </div>
-      )}
+      <RealTop />
+
       <div
         className="flex gap-4 flex-wrap py-2 text-white overflow-x-scroll"
         id="stories"
       >
-        <a href="/stories#stories">
+        <a href="/real-stories#stories">
           <span
             className={
               TAGS.default + (activeTag === 0 ? TAGS.active : TAGS.inactive)
@@ -54,7 +45,10 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
         {tags.map((tag, index) => {
           if (tag.name !== "featured") {
             return (
-              <a href={"/stories?tag=" + tag.name + "#stories"} key={tag.id}>
+              <a
+                href={"/real-stories?tag=" + tag.name + "#stories"}
+                key={tag.id}
+              >
                 <span
                   className={
                     TAGS.default +
