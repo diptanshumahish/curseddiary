@@ -93,6 +93,7 @@
 }
 .blogContainer article li {
   margin-left: 40px;
+  padding: 0 5px;
 }
 .blogContainer article ul {
   list-style: disc;
