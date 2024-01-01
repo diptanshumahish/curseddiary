@@ -26,6 +26,7 @@ export default async function RenderImage({ block }: Props) {
         width={1920}
         height={1080}
         alt="Cursed Diary Imagez"
+        className="rounded-sm"
       />
       <figcaption className="caption">
         {block.image.caption[0].plain_text}

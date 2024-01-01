@@ -5,6 +5,7 @@ import {
 } from "@notionhq/client/build/src/api-endpoints";
 import React from "react";
 import { styling } from "./styling";
+import { Quote } from "lucide-react";
 
 interface Props {
   block:
@@ -26,9 +27,14 @@ export default async function RenderTextBlock({ block }: Props) {
       );
     case "quote":
       return (
-        <blockquote>
+        <blockquote className="bg-[#ffffff0f] w-full p-4 flex gap-2 items-star rounded-sm">
+          <Quote fill="white" />
           {block.quote.rich_text.map((i) => (
-            <span key={i.plain_text}  style={styling(i.annotations)}>
+            <span
+              key={i.plain_text}
+              style={styling(i.annotations)}
+              className="text-white "
+            >
               {i.plain_text}
             </span>
           ))}
@@ -39,7 +45,11 @@ export default async function RenderTextBlock({ block }: Props) {
       return (
         <code>
           {block.code.rich_text.map((i) => (
-            <span key={i.plain_text} className="bg-gray-200 ml-2 px-2 rounded-sm py-[1px] border flex items-center text-md justify-center w-fit " style={styling(i.annotations)}>
+            <span
+              key={i.plain_text}
+              className="bg-gray-200 ml-2 px-2 rounded-sm py-[1px] border flex items-center text-md justify-center w-fit "
+              style={styling(i.annotations)}
+            >
               {i.plain_text}
             </span>
           ))}

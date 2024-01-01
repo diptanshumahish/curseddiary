@@ -7,6 +7,7 @@ import {
 export default class NotionClient {
   private secret = process.env.NOTION_DATABASE_SECRET;
   private dbId = process.env.NOTION_DATABASE_ID;
+  private rId = process.env.NOTION_REALLIFE_ID;
   public client: Client;
 
   constructor() {
@@ -30,9 +31,25 @@ export default class NotionClient {
       }
     }
   }
+  //for real life events
+  async getRealLifeDatabase() {
+    try {
+      if (!this.rId) return;
+      const response = await this.client.databases.query({
+        database_id: this.rId,
+      });
 
-  async getTags() {
-    const posts = await this.getPosts();
+      return response.results;
+    } catch (error) {
+      console.error(error);
+      if (isNotionClientError(error)) {
+        // bake some hash brownies later
+      }
+    }
+  }
+
+  async getTags(reallife: boolean) {
+    const posts = await this.getPosts(reallife);
     if (!posts) return [];
 
     let tags: Array<SelectPropertyResponse> = [];
@@ -51,8 +68,6 @@ export default class NotionClient {
   }
 
   static getColumns(post: PageObjectResponse) {
-    // console.log("here are props");
-    // console.log(post.properties);
     const title =
       post.properties["Name"]?.type === "title" &&
       post.properties["Name"]?.["title"]?.[0]?.type === "text"
@@ -80,12 +95,11 @@ export default class NotionClient {
 
     return { title, status, tags, cover, person, desc };
   }
-  async getPosts(page = 0, ...tag: string[]) {
+  async getPosts(reallife: boolean, page = 0, ...tag: string[]) {
     try {
       if (!this.dbId) return;
-
       const response = await this.client.databases.query({
-        database_id: this.dbId,
+        database_id: reallife === false ? this.dbId : this.rId,
         page_size: page,
         filter: {
           and: [
@@ -127,7 +141,6 @@ export default class NotionClient {
     } catch (error) {
       console.error(error);
       if (isNotionClientError(error)) {
-        // bake some hash brownies later
       }
     }
   }
@@ -140,7 +153,6 @@ export default class NotionClient {
     } catch (error) {
       console.error(error);
       if (isNotionClientError(error)) {
-        // break some balls
       }
     }
   }
@@ -154,7 +166,6 @@ export default class NotionClient {
     } catch (error) {
       console.error(error);
       if (isNotionClientError(error)) {
-        // break some blocks
       }
     }
   }

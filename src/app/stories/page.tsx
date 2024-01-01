@@ -17,8 +17,8 @@ const TAGS = {
 };
 export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
   const [tags, featured] = await Promise.all([
-    nc.getTags(),
-    nc.getPosts(0, "featured"),
+    nc.getTags(false),
+    nc.getPosts(false, 0, "featured"),
   ]);
 
   const activeTag =
@@ -27,12 +27,13 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
       : tags.map((x) => x.name).indexOf(props.searchParams.tag) + 1;
 
   const posts = await nc.getPosts(
+    false,
     0,
     activeTag === 0 ? "" : tags[activeTag - 1].name
   );
 
   return (
-    <div className="px-[5%] py-[3%] w-full">
+    <div className="px-[5%] flex flex-col gap-4 py-[3%] w-full">
       <StoryTop />
       {featured?.[0] && (
         <div className="py-6">

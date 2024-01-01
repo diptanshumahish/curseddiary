@@ -19,7 +19,11 @@ export default async function RenderCallout({ block }: Props) {
             <Image
               blurDataURL={assets.blur_img}
               placeholder="blur"
-              src={callout.icon.type === "file" ? callout.icon.file.url : callout.icon.external.url}
+              src={
+                callout.icon.type === "file"
+                  ? callout.icon.file.url
+                  : callout.icon.external.url
+              }
               width={650}
               height={400}
               alt="Shapt image"
@@ -29,7 +33,11 @@ export default async function RenderCallout({ block }: Props) {
       )}
       <div>
         {callout.rich_text.map((i) => (
-          <span key={i.plain_text} style={styling(i.annotations)}>
+          <span
+            key={i.plain_text}
+            style={styling(i.annotations)}
+            className="text-white"
+          >
             {i.plain_text}
           </span>
         ))}
