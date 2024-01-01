@@ -84,17 +84,14 @@
 }
 .blogContainer article ul,
 .blogContainer article ol {
-  margin: 1rem auto;
   color: #ffffff7a;
   width: 100%;
   padding: 10px 0;
-  line-height: 2rem;
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.2;
 }
 .blogContainer article li {
-  margin: 0.7rem auto;
   margin-left: 40px;
 }
 .blogContainer article ul {
