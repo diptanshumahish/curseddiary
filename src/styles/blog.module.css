@@ -111,16 +111,16 @@
 .blogContainer article q,
 .blogContainer article section {
   display: flex;
-  gap: 1rem;
-  margin: 1.6rem auto;
+  margin-bottom: 5px;
+  gap: 0.5rem;
   color: #1c3e51;
-  line-height: 2rem;
-  font-size: 1.3rem;
+  line-height: 1.5rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.5;
-  background-color: #f3f7f7;
-  padding: 2rem;
-  border-radius: 10px;
+  background-color: #f3f7f71b;
+  padding: 1rem;
+  border-radius: 1px;
 }
 .blogContainer article table {
   background-color: #fff;
