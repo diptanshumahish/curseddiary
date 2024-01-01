@@ -85,8 +85,9 @@
 .blogContainer article ul,
 .blogContainer article ol {
   margin: 1rem auto;
-  color: #3a3b3b;
+  color: #ffffff7a;
   width: 100%;
+  padding: 10px 0;
   line-height: 2rem;
   font-size: 1.3rem;
   font-weight: 300;
