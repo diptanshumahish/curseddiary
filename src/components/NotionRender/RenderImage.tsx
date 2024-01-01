@@ -18,7 +18,7 @@ export default async function RenderImage({ block }: Props) {
   }, [block]);
 
   return (
-    <figure className="pointer-events-none w-full h-auto">
+    <figure className="pointer-events-none w-full h-auto pb-6 ">
       <Image
         blurDataURL={assets.blur_img}
         placeholder="blur"
@@ -26,7 +26,7 @@ export default async function RenderImage({ block }: Props) {
         width={1920}
         height={1080}
         alt="Cursed Diary Imagez"
-        className="rounded-sm"
+        className="rounded border border-white border-opacity-15 lg:h-auto h-[40vh] w-full aspect-auto"
       />
       <figcaption className="caption">
         {block.image.caption[0].plain_text}
