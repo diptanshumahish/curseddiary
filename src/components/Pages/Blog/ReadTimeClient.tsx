@@ -1,4 +1,5 @@
 "use client";
+import { Loader } from "lucide-react";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 
 export default function ReadTimeClient() {
@@ -22,9 +23,7 @@ export default function ReadTimeClient() {
       {readingTime !== null ? (
         `${readingTime} mins`
       ) : (
-        <div
-          className={`inline-block animate-spin rounded-full border-t-4 border-white  border-opacity-25 h-8 w-8`}
-        ></div>
+        <Loader className="animate-spin" />
       )}
     </div>
   );

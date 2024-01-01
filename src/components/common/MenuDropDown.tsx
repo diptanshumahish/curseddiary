@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ArrowUpRightFromCircle } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 interface Props {
   height: string;
   onC: () => void;

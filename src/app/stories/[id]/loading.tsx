@@ -1,3 +1,4 @@
+import { Loader } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -11,6 +12,7 @@ export default function loading() {
         alt="Cursed diary logo "
         className="animate-pulse"
       />
+      <Loader className="animate-spin" />
       <p className="lg:text-2xl text-xl font-bold animate-pulse">Loading</p>
       <span className="opacity-40">Beep beep boop boop</span>
       <span className="opacity-40">Getting your content</span>
