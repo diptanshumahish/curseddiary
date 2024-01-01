@@ -27,7 +27,7 @@ export default async function RenderTextBlock({ block }: Props) {
       );
     case "quote":
       return (
-        <blockquote className="bg-[#ffffff0f] w-full p-4 flex gap-2 items-star rounded-sm">
+        <blockquote className="bg-[#ffffff0f] border-l-4 border-white w-full p-4 flex gap-2 items-star rounded-sm">
           <Quote fill="white" />
           {block.quote.rich_text.map((i) => (
             <span
