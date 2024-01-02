@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -23,6 +24,9 @@ export default function Footer() {
           purpose, I do not promote any of these stuff, so take the fun as fun.
           Thanks.
         </span>
+        <Link href="/submit" className="underline">
+          Want to submit content?
+        </Link>
       </div>
     </div>
   );

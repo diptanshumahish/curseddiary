@@ -28,7 +28,7 @@ export default async function PostComponent({ post }: Props) {
           <span className="h-[45%] opacity-50 text-sm w-full text-ellipsis overflow-hidden line-clamp-4">
             {post.desc}
           </span>
-          <span>{moment(post.last_edited_time).format("D MMM,YYYY")}</span>
+          <span>{moment(post.created_time).format("D MMM,YYYY")}</span>
           <span className="flex flex-wrap gap-1 text-sm">
             {post.tags!.slice(0, 2).map((post, idx) => {
               return (
@@ -36,7 +36,7 @@ export default async function PostComponent({ post }: Props) {
                   key={idx}
                   className="border border-white rounded-xs px-2 border-opacity-15 opacity-45 "
                 >
-                  #{post.name}
+                  {post.name}
                 </span>
               );
             })}

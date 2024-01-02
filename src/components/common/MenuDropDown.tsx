@@ -49,11 +49,8 @@ export default function MenuDropDown({ height, onC }: Props) {
             <Link className="active:underline hover:underline" href="/stories">
               Stories
             </Link>
-            <Link
-              className="active:underline hover:underline"
-              href="/stories?tag=featured#stories"
-            >
-              Featured
+            <Link className="active:underline hover:underline" href="/submit">
+              Submit
             </Link>
             <Link
               className="active:underline hover:underline"
@@ -73,11 +70,13 @@ export default function MenuDropDown({ height, onC }: Props) {
           </div>
           <div className="flex flex-col gap-1">
             <h2 className="opacity-40 text-sm">SOCIALS</h2>
-            <Link href="/stories">Instagram</Link>
-            <Link href="/stories">Github</Link>
-            <Link href="/stories">Mail</Link>
-            <Link href="/stories">Facebook</Link>
-            <Link href="/stories">Submit </Link>
+            <Link href="https://www.instagram.com/cursed_diary_">
+              Instagram
+            </Link>
+            <Link href="https://www.instagram.com/cursed_diary_">Github</Link>
+            <Link href="https://www.instagram.com/cursed_diary_">Mail</Link>
+            <Link href="https://www.instagram.com/cursed_diary_">Facebook</Link>
+            <Link href="/submit">Submit </Link>
           </div>
         </div>
         <div className="flex flex-col text-xl items-end cursor-pointer opacity-60 hover:opacity-100 transition-opacity">
