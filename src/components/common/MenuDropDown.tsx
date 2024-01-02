@@ -46,11 +46,30 @@ export default function MenuDropDown({ height, onC }: Props) {
         <div className="flex gap-6">
           <div className="flex flex-col gap-1">
             <h2 className="opacity-40 text-sm">NAVIGATION</h2>
-            <Link href="/stories">Stories</Link>
-            <Link href="/stories?tag=featured#stories">Featured</Link>
-            <Link href="/real-stories">Real Life</Link>
-            <Link href="/real-stories">Folklores</Link>
-            <Link href="/">Home</Link>
+            <Link className="active:underline hover:underline" href="/stories">
+              Stories
+            </Link>
+            <Link
+              className="active:underline hover:underline"
+              href="/stories?tag=featured#stories"
+            >
+              Featured
+            </Link>
+            <Link
+              className="active:underline hover:underline"
+              href="/real-stories"
+            >
+              Real Life
+            </Link>
+            <Link
+              className="active:underline hover:underline"
+              href="/real-stories"
+            >
+              Folklores
+            </Link>
+            <Link className="active:underline hover:underline" href="/">
+              Home
+            </Link>
           </div>
           <div className="flex flex-col gap-1">
             <h2 className="opacity-40 text-sm">SOCIALS</h2>

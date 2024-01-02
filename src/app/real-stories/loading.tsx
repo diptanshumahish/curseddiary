@@ -14,10 +14,10 @@ export default function loading() {
       />
       <Loader className="animate-spin" />
       <p className="lg:text-2xl text-xl font-bold animate-pulse">Loading</p>
-      <span className="opacity-40">Beep beep boop boop</span>
-      <span className="opacity-40 text-sm">
-        Real life stories are sometimes way too scary
-      </span>
+      <div className="flex flex-col gap-1 text-sm items-center justify-center">
+        <span className="opacity-40">Beep beep boop boop</span>
+        <span className="opacity-40">Reality is more scary 🤞</span>
+      </div>
     </div>
   );
 }

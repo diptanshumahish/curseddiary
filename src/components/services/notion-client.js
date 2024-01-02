@@ -5,22 +5,22 @@ import {
 } from "@notionhq/client/build/src/api-endpoints";
 
 export default class NotionClient {
-  private secret = process.env.NOTION_DATABASE_SECRET;
-  private dbId = process.env.NOTION_DATABASE_ID;
-  private rId = process.env.NOTION_REALLIFE_ID;
-  public client: Client;
+  #secret = process.env.NOTION_DATABASE_SECRET;
+  #dbId = process.env.NOTION_DATABASE_ID;
+  #rId = process.env.NOTION_REALLIFE_ID;
+  #client;
 
   constructor() {
     this.client = new Client({
-      auth: this.secret,
+      auth: this.#secret,
     });
   }
 
   async getDatabase() {
     try {
-      if (!this.dbId) return;
+      if (!this.#dbId) return;
       const response = await this.client.databases.query({
-        database_id: this.dbId,
+        database_id: this.#dbId,
       });
 
       return response.results;
@@ -34,9 +34,9 @@ export default class NotionClient {
   //for real life events
   async getRealLifeDatabase() {
     try {
-      if (!this.rId) return;
+      if (!this.#rId) return;
       const response = await this.client.databases.query({
-        database_id: this.rId,
+        database_id: this.#rId,
       });
 
       return response.results;
@@ -48,11 +48,11 @@ export default class NotionClient {
     }
   }
 
-  async getTags(reallife: boolean) {
+  async getTags(reallife) {
     const posts = await this.getPosts(reallife);
     if (!posts) return [];
 
-    let tags: Array<SelectPropertyResponse> = [];
+    let tags = [];
     for (let i = 0; i < posts.length; i++) {
       const element = posts[i];
       if (!element?.tags) continue;
@@ -67,7 +67,7 @@ export default class NotionClient {
     return Array.from(tags.values());
   }
 
-  static getColumns(post: PageObjectResponse) {
+  static getColumns(post) {
     const title =
       post.properties["Name"]?.type === "title" &&
       post.properties["Name"]?.["title"]?.[0]?.type === "text"
@@ -92,14 +92,15 @@ export default class NotionClient {
         : post.cover?.file.url || null;
 
     const person = post.properties["Person"];
+    
 
     return { title, status, tags, cover, person, desc };
   }
-  async getPosts(reallife: boolean, page = 0, ...tag: string[]) {
+  async getPosts(reallife, page = 0, ...tag) {
     try {
-      if (!this.dbId) return;
+      if (!this.#dbId) return;
       const response = await this.client.databases.query({
-        database_id: reallife === false ? this.dbId : this.rId,
+        database_id: reallife === false ? this.#dbId : this.#rId,
         page_size: page,
         filter: {
           and: [
@@ -119,7 +120,7 @@ export default class NotionClient {
         },
       });
       const database = response.results;
-      let posts: Post[] = [];
+      let posts = [];
 
       for (let index = 0; index < database.length; index++) {
         const element = database[index];
@@ -145,7 +146,7 @@ export default class NotionClient {
     }
   }
 
-  async getPage(page_id: string) {
+  async getPage(page_id) {
     try {
       return await this.client.pages.retrieve({
         page_id,
@@ -157,7 +158,7 @@ export default class NotionClient {
     }
   }
 
-  async getBlocks(block_id: string, page_size = 50) {
+  async getBlocks(block_id, page_size = 50) {
     try {
       return await this.client.blocks.children.list({
         block_id,
@@ -171,17 +172,3 @@ export default class NotionClient {
   }
 }
 
-export type SelectPropertyResponse = NonNullable<
-  SelectPropertyItemObjectResponse["select"]
->;
-export interface Post {
-  id: string | null;
-  url: string | null;
-  created_time: string | null;
-  last_edited_time: string | null;
-  title: string | null;
-  desc: string | null;
-  status: string | null;
-  tags: SelectPropertyResponse[] | null;
-  cover: string | null;
-}

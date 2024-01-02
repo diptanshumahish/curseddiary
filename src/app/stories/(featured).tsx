@@ -1,9 +1,10 @@
 import React from "react";
-import { Post } from "@/components/services/notion-client";
+
 import Link from "next/link";
 import moment from "moment";
 import Image from "next/image";
 import assets from "@/components/services/assets";
+import { Post } from "@/components/services/post";
 
 export default function Featured({ post }: { post: Post }) {
   const blog_id =

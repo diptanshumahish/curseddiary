@@ -10,7 +10,7 @@ interface Props {
 export default async function RenderCallout({ block }: Props) {
   const callout = block.callout;
   return (
-    <section className="">
+    <section className="w-full">
       {callout.icon && (
         <Fragment>
           {callout.icon.type === "emoji" ? (

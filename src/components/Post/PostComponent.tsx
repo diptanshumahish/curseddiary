@@ -1,9 +1,10 @@
 import Link from "next/link";
 import React from "react";
-import { Post } from "../services/notion-client";
+
 import moment from "moment";
 import Image from "next/image";
 import assets from "../services/assets";
+import { Post } from "../services/post";
 
 interface Props {
   post: Post;

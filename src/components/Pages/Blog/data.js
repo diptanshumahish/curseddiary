@@ -9,14 +9,15 @@ export async function getBlog(id) {
 export async function getBlogData(id) {
   const data = {
     title: "",
-    url: "",
+    email: "",
     tags: [""],
     user: {
       name: "",
-      image: "",
+      email: "",
     },
     desc: "",
     date: "",
+    aboutAuthor:""
   };
   const post = await nc.getPage(id);
 
@@ -35,14 +36,18 @@ export async function getBlogData(id) {
   else data.url = post.cover.external.url;
   //tags
   const tags = post.properties["Tags"].multi_select;
-
   const tagArray = tags.map((tag) => tag.name);
   data.tags = tagArray;
-
+  //description
   if (post.properties["Description"] !== undefined) {
     data.desc = post.properties["Description"].rich_text[0].plain_text;
   }
-  data.date = post.last_edited_time;
+  //date
+  data.date = post.created_time;
+  data.user.name= post.properties.By.rich_text[0].plain_text;
+  data.user.email= post.properties.Email.rich_text[0].plain_text;
+  data.aboutAuthor= post.properties.about.rich_text[0].plain_text
+  // console.log(post.properties.about.rich_text[0].plain_text)
 
   return data;
 }
