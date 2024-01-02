@@ -55,7 +55,7 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
           <span className="text-sm opacity-50">{aboutAuthor}</span>
           <a
             className=" flex items-center gap-2 underline"
-            href={`mailto:${user.email}`}
+            href={`mailto:${user.email}?cc=diptanshumahish2016@gmail.com&subject=Contacing%20regarding%20the%20story%20at%20Cursed%20Diaries&body=Hi%20${user.name}%2C%0D%0AI%20just%20read%20your%20story%20at%20Cursed%20Diary.%0D%0A%0D%0A%0D%0AThank%20you`}
           >
             Contact Author <Mail size={18} />
           </a>
