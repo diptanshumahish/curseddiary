@@ -25,20 +25,20 @@ export default function SubmitTop() {
           <SubmitType type="Urban Legends or urban legend based games and other folklore" />
         </div>
       </div>
-      <div className="flex gap-6 lg:w-[40%] h-full">
+      <div className="flex lg:gap-6 justify-between lg:w-[40%] h-full">
         <Image
           src="/submitimages/s1.webp"
           height={500}
           width={300}
           alt="Submit images"
-          className="object-cover w-[50%] h-full aspect-[8/16] border border-white border-opacity-10"
+          className="object-cover lg:w-[50%] w-[45%] h-full aspect-[8/16] border border-white border-opacity-10"
         />
         <Image
           src="/submitimages/s2.webp"
           height={500}
           width={300}
           alt="Submit images"
-          className="object-cover w-[50%] h-auto aspect-[8/16] border border-white border-opacity-10"
+          className="object-cover lg:w-[50%] w-[45%] h-auto aspect-[8/16] border border-white border-opacity-10"
         />
         {/* <Image
           src="/submitimages/s2.webp"
