@@ -23,7 +23,7 @@ export default async function PostComponent({ post }: Props) {
           className="w-[40%] h-auto aspect-[9/16] object-cover border border-white border-opacity-40 rounded-sm"
         />
         <div className="w-[55%] h-full flex flex-col gap-2">
-          <h3 className="text-lg font-bold">{post.title}</h3>
+          <h3 className="text-lg ">{post.title}</h3>
           <hr className="opacity-40" />
           <span className="h-[45%] opacity-50 text-sm w-full text-ellipsis overflow-hidden line-clamp-4">
             {post.desc}
