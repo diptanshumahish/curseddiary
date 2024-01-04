@@ -45,12 +45,12 @@
 }
 .blogContainer article h2 {
   font-size: 1.6rem;
-  font-weight: 600;
+  /* font-weight: 600; */
   text-align: left;
 }
 .blogContainer article h3 {
   font-size: 1.4rem;
-  font-weight: 600;
+  /* font-weight: 600; */
   text-align: left;
   width: 100%;
 }
