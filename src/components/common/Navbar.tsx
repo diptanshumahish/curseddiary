@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MenuSquare, XIcon } from "lucide-react";
+import { Menu, XIcon } from "lucide-react";
 import MenuDropDown from "./MenuDropDown";
 export default function Navbar() {
   const [size, setSize] = useState("0vh");
@@ -25,7 +25,7 @@ export default function Navbar() {
                 setSize("40vh");
               }}
             >
-              <MenuSquare size={25} />
+              <Menu size={25} />
             </button>
           ) : (
             <button
