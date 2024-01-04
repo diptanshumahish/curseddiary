@@ -21,11 +21,15 @@ export default async function RenderHeadingBlock({ block }: Props) {
         ));
       case "heading_2":
         return block.heading_2.rich_text.map((h1) => (
-          <h2 key={h1.plain_text}>{h1.plain_text}</h2>
+          <h2 key={h1.plain_text} className="font-normal">
+            {h1.plain_text}
+          </h2>
         ));
       case "heading_3":
         return block.heading_3.rich_text.map((h1) => (
-          <h3 key={h1.plain_text}>{h1.plain_text}</h3>
+          <h3 className="font-normal" key={h1.plain_text}>
+            {h1.plain_text}
+          </h3>
         ));
     }
   }, [block]);
