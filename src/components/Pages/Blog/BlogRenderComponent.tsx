@@ -25,7 +25,7 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
         />
         <div className="bg-gradient-to-b from-transparent to-theme-bg absolute inset-0  w-full" />
         <div className="absolute bottom-[5%] flex flex-col gap-2 left-[5%] right-[5%] text-white">
-          <h1 className="text-4xl font-bold">{title}</h1>
+          <h1 className="text-4xl">{title}</h1>
 
           <p className="opacity-60 lg:max-w-[60%]">{desc}</p>
           <div className="flex items-center gap-4">
