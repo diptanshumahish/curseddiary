@@ -7,11 +7,12 @@ export default function RealTop() {
       <h2 className="text-3xl">Real Stories / Folklore</h2>
       <span className="opacity-40">
         This is the collection of all <b>real life stuff</b>, the incidents that
-        took place in the real world, some really <i>"Haunted"</i>, while some
-        maybe a hoax? Many of these are just mere urban games. While many others
-        are about places that are having the "thing". We have divided these on
-        the basis of the <b> countries, where the thing is about.</b> Make sure
-        to check them out :)
+        took place in the real world, some really <i> &apos;Haunted&pos;</i>,
+        while some maybe a hoax? Many of these are just mere urban games. While
+        many others are about places that are having the &apos;thing&apos;. We
+        have divided these on the basis of the{" "}
+        <b> countries, where the thing is about.</b> Make sure to check them out
+        :)
       </span>
       <figure className="pointer-events-none">
         <Image
