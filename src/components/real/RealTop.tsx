@@ -6,11 +6,12 @@ export default function RealTop() {
     <div className="flex flex-col gap-2 text-white">
       <h2 className="text-3xl">Real Stories / Folklore</h2>
       <span className="opacity-40">
-        Here is our entire exhaustive list of stories that you can read out. Use
-        the filters and go page by page, maybe some amazing content awaits you
-        some millions of pages away, hehe. Use the tags to filter out content as
-        per as your needs. Our tags would help you in deciding what to read and{" "}
-        <b>maybe what not?</b>
+        This is the collection of all <b>real life stuff</b>, the incidents that
+        took place in the real world, some really <i>"Haunted"</i>, while some
+        maybe a hoax? Many of these are just mere urban games. While many others
+        are about places that are having the "thing". We have divided these on
+        the basis of the <b> countries, where the thing is about.</b> Make sure
+        to check them out :)
       </span>
       <figure className="pointer-events-none">
         <Image

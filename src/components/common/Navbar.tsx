@@ -25,7 +25,12 @@ export default function Navbar() {
                 setSize("40vh");
               }}
             >
-              <Menu size={25} />
+              <Image
+                src="/assets/menu.svg"
+                height={18}
+                width={18}
+                alt="Menu Icon"
+              />
             </button>
           ) : (
             <button
