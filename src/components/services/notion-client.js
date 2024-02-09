@@ -158,7 +158,7 @@ export default class NotionClient {
     }
   }
 
-  async getBlocks(block_id, page_size = 50) {
+  async getBlocks(block_id, page_size = 90) {
     try {
       return await this.client.blocks.children.list({
         block_id,
