@@ -23,7 +23,7 @@ export default function Header() {
           height={1280}
           width={1920}
           alt="cursed diary background image"
-          className="w-full h-[80vh] rounded-sm object-cover border border-white border-opacity-20"
+          className="w-full h-[40vh] rounded-sm object-cover border border-white border-opacity-20"
         />
         <figcaption className="caption">
           come buddy, the dark woods are waiting for you

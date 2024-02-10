@@ -18,7 +18,7 @@ export default function StoryTop() {
           height={1280}
           width={1920}
           alt="stories page background image"
-          className="w-full h-[80vh] rounded-sm object-cover border border-white border-opacity-20"
+          className="w-full h-[40vh] rounded-sm object-cover border border-white border-opacity-20"
         />
         <figcaption className="caption">
           Let&apos;s start on a journey, shall we?
