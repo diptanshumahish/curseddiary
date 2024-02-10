@@ -23,11 +23,11 @@ export default async function TrendingSection() {
           })}
         {trending?.length === 0 && <div>Loading</div>}
       </div>
-      <div className="flex items-center justify-center w-full">
+      <div className="flex items-center justify-center w-full py-4">
         {" "}
         {trending.length > 0 && (
           <Link
-            className="p-2 border hover:bg-white hover:text-theme-bg transition-colors border-white rounded-md px-6 border-opacity-15"
+            className="p-2 md:w-fit w-full border hover:bg-white hover:text-theme-bg transition-colors border-white rounded-md px-6 border-opacity-15"
             href="/stories"
           >
             See More

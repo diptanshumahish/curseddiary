@@ -39,11 +39,11 @@ export default async function RealLife() {
             })}
           {rPosts?.length === 0 && <div>Loading</div>}
         </div>
-        <div className="flex items-center justify-center w-full">
+        <div className="flex items-center py-4 justify-center w-full">
           {" "}
           {rPosts.length > 0 && (
             <Link
-              className="p-2 border hover:bg-white hover:text-theme-bg transition-colors border-white rounded-md px-6 border-opacity-15"
+              className="p-2 border hover:bg-white hover:text-theme-bg transition-colors border-white rounded-md px-6 md:w-fit w-full border-opacity-15"
               href="/real-stories"
             >
               See More
