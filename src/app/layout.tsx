@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 
-const inter = Kosugi_Maru({ subsets: ["latin"], weight: ["400"] });
+const km = Kosugi_Maru({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
   title: "Cursed Diary",
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-theme-bg`}>
+      <body className={`${km.className} bg-theme-bg`}>
         <Navbar />
         {children}
         <Footer />

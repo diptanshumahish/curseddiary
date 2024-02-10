@@ -4,7 +4,7 @@ import PostComponent from "../Post/PostComponent";
 
 export default async function TrendingSection() {
   const nc = new NotionClient();
-  const trending = await nc.getPosts(false, 0, "home");
+  const trending = await nc.getPosts(false, 0, "featured");
   return (
     <div className="px-[5%] pb-[3%] flex flex-col gap-2 text-white ">
       <h2 className="text-3xl">Trending Stories</h2>
