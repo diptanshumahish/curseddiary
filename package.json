@@ -13,6 +13,7 @@
     "lucide-react": "^0.303.0",
     "moment": "^2.30.1",
     "next": "14.0.4",
+    "nextjs-toploader": "^1.6.6",
     "react": "^18",
     "react-dom": "^18"
   },

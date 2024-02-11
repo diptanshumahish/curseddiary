@@ -3,6 +3,7 @@ import { Kosugi_Maru } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
+import NextTopLoader from "nextjs-toploader";
 
 const km = Kosugi_Maru({ subsets: ["latin"], weight: ["400"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${km.className} bg-theme-bg`}>
+        <NextTopLoader color="#e3a86d" shadow={false} showSpinner={false} />
         <Navbar />
         {children}
         <Footer />
