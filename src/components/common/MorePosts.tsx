@@ -15,7 +15,7 @@ export default async function MorePosts({ tag, type }: Props) {
   return (
     <div className="text-white px-[5%] py-[3%] flex flex-col gap-4  ">
       <div className="flex flex-col gap-1w-full border-t border-white border-opacity-35 pt-4 ">
-        <div className="flex justify-between items-center">
+        <div className="flex lg:justify-between lg:flex-row flex-col items-center">
           <h3 className="text-3xl text-yellow-400">Recommended for you</h3>
           <Link href={`/${more}?tag=${tag[0]}`}>View More</Link>
         </div>
