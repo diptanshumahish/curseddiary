@@ -16,7 +16,7 @@ export default async function PostComponent({ post, postType }: Props) {
   const genres = post.tags.map((ele) => ele.name);
   return (
     <Link
-      href={"/stories/" + encodeURIComponent(story_id) + `?type=${postType}`}
+      href={"/stories/" + encodeURIComponent(story_id)}
       data-type="post"
       data-genre={genres}
       data-catagory={postType}
