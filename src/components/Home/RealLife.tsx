@@ -14,10 +14,8 @@ export default async function RealLife() {
     >
       <h2 className="text-3xl">Real Life events/ Folklores</h2>
       <span className="md:py-0 py-4">
-        get to know about the popular known stories that have been around the
-        people. Stories, rather real life incidents, chill enough to bring in
-        the scare of a lifetime. The events are filtered on the basis of
-        countries. you can search on the basis of countries to get your data
+        Get to know about some of the very popular folklores from here. Stories
+        rather real life incidents gory enough to shake your bones.
       </span>
       <figure className="pointer-events-none">
         <Image

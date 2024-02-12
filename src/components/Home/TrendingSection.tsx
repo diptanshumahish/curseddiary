@@ -10,11 +10,11 @@ export default async function TrendingSection() {
     <div className="px-[5%]  pb-[3%] flex flex-col gap-2 text-white  ">
       <h2 className="text-3xl ">Trending Stories</h2>
       <span className="text-gray-400 md:py-0 py-4">
-        Here is a small set of stories that I think are safe for the normal
-        audience to read. Feel free to explore more, maybe you can get soemthing
-        you definitely &quot;didnot want&quot;. I guess you would love these
-        stories as new comers, This trending stories&apos; list keeps updating
-        every few days, so stay vigil haha
+        Here is a set of stories which are &apos;supposedly&apos; considered
+        safe for the normal audience to go through. Feel free to explore more,
+        maybe you can stumble across something you definitely &aposdid not want
+        to&apos;. You would probably enjoy these stories as newcomers. This list
+        of stories keeps updating every few days, so stay vigil. haha.
       </span>
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-4 gap-2 lg:py-[2%]">
         {trending &&
