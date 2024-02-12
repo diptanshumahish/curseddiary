@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, XIcon } from "lucide-react";
+import { MenuSquare, XIcon } from "lucide-react";
 import MenuDropDown from "./MenuDropDown";
 export default function Navbar() {
   const [size, setSize] = useState("0vh");
@@ -25,12 +25,7 @@ export default function Navbar() {
                 setSize("40vh");
               }}
             >
-              <Image
-                src="/assets/menu.svg"
-                height={18}
-                width={18}
-                alt="Menu Icon"
-              />
+              <MenuSquare />
             </button>
           ) : (
             <button
