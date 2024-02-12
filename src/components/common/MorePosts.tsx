@@ -20,8 +20,8 @@ export default async function MorePosts({ tag, type }: Props) {
           <Link href={`/${more}?tag=${tag[0]}`}>View More</Link>
         </div>
         <span className="opacity-55">
-          Here are some posts that you might like, make sure to visit these
-          posts{" "}
+          You can continue to dig deeper into this world of imagination by
+          reading these posts below, till then good luck
         </span>
       </div>
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-4 gap-2 lg:py-[2%] ">
