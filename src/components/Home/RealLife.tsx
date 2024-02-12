@@ -3,6 +3,7 @@ import React from "react";
 import NotionClient from "../services/notion-client";
 import PostComponent from "../Post/PostComponent";
 import Link from "next/link";
+import { staticText } from "@/constant/staticText";
 
 export default async function RealLife() {
   const nc = new NotionClient();
@@ -12,11 +13,15 @@ export default async function RealLife() {
       id="reallife"
       className="w-full px-[5%] py-[5%] text-white flex-col flex gap-4"
     >
+      <div className="w-full lg:py-4 lg:pb-6 py-8 flex items-center justify-center">
+        <img
+          className="lg:w-[30%] md:w-[50%] w-full h-auto invert opacity-50"
+          src="/assets/patterns/pat2.svg"
+          alt=""
+        />
+      </div>
       <h2 className="text-3xl">Real Life events/ Folklores</h2>
-      <span className="md:py-0 py-4">
-        Get to know about some of the very popular folklores from here. Stories
-        rather real life incidents gory enough to shake your bones.
-      </span>
+      <span className="md:py-0 py-4">{staticText.reallifeHome}</span>
       <figure className="pointer-events-none">
         <Image
           src="/back/back2.webp"
@@ -26,7 +31,7 @@ export default async function RealLife() {
           className="w-full h-[40vh] rounded-sm object-cover border border-white border-opacity-20"
         />
         <figcaption className="caption">
-          The mystical stories we all knew
+          {staticText.realLifeImgHomeCaption}
         </figcaption>
       </figure>
       <span>

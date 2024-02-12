@@ -2,19 +2,25 @@ import React from "react";
 import NotionClient from "../services/notion-client";
 import PostComponent from "../Post/PostComponent";
 import Link from "next/link";
+import { staticText } from "@/constant/staticText";
 
 export default async function TrendingSection() {
   const nc = new NotionClient();
   const trending = await nc.getPosts(false, 0, "featured");
   return (
-    <div className="px-[5%]  pb-[3%] flex flex-col gap-2 text-white  ">
-      <h2 className="text-3xl ">Trending Stories</h2>
+    <div className="px-[5%]   pb-[3%] flex flex-col gap-2 text-white  ">
+      <div className="w-full lg:py-4 lg:pb-6 py-8 justify-center flex items-center flex-col gap-4 ">
+        <div className="w-[30px] h-[2px] bg-white bg-opacity-25 rounded-md" />
+        <img
+          className="lg:w-[30%] md:w-[50%] w-full h-auto invert opacity-50 justify-center "
+          src="/assets/patterns/pat4.svg"
+          alt=""
+        />
+        <div className="w-[30px] h-[2px] bg-white bg-opacity-25 rounded-md" />
+      </div>
+      <h2 className="text-3xl  ">Trending Stories</h2>
       <span className="text-gray-400 md:py-0 py-4">
-        Here is a set of stories which are &apos;supposedly&apos; considered
-        safe for the normal audience to go through. Feel free to explore more,
-        maybe you can stumble across something you definitely &aposdid not want
-        to&apos;. You would probably enjoy these stories as newcomers. This list
-        of stories keeps updating every few days, so stay vigil. haha.
+        {staticText.homeTrending}
       </span>
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-4 gap-2 lg:py-[2%]">
         {trending &&

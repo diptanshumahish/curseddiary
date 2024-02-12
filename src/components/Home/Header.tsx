@@ -1,34 +1,37 @@
+import { staticText } from "@/constant/staticText";
 import Image from "next/image";
 import React from "react";
+import assets from "../services/assets";
 
+const images = [
+  "/back/backhome.webp",
+  "/back/backhome1.webp",
+  "/back/backhome2.webp",
+];
+
+function getRandomNumber(maxRange: number) {
+  return Math.floor(Math.random() * (maxRange + 1));
+}
 export default function Header() {
   return (
-    <div className="w-full px-[5%] py-[5%] text-white flex-col flex gap-4">
-      <h1 className="text-4xl font-bold">Cursed Diary.</h1>
-      <span className="text-gray-400">
-        Step into this realm of surreal adventure where fiction comes to life
-        with a twist of horror and reality is a mere bystander. Greetings,
-        reader. Have you stumbled upon this domain accidentally, or are you
-        lured by the eerie whispers of the unknown? Join us as we navigate the
-        intricate web of tales—some purely imaginative, others dipped in the
-        chilling embrace of horror, and a few that blur the line between reality
-        and nightmare. Beware, for these woods conceal unmarked trails that lead
-        to the depths of the uncanny. Are you ready to tread the haunting path
-        and uncover the secrets that lie within? Welcome to a world where the{" "}
-        <b>shadows tell stories</b>, and the ordinary becomes extraordinary.
-      </span>
-      <figure className="pointer-events-none">
+    <div className="w-full relative lg:h-[60vh] h-[90vh] overflow-hidden px-[5%] pb-[2%] text-white flex-col flex justify-end">
+      <div className="left-0 right-0 top-0  absolute w-full h-[60vh]">
         <Image
-          src="/back/back.webp"
-          height={1280}
+          src={images[getRandomNumber(images.length)]}
+          alt="home background"
+          height={600}
           width={1920}
-          alt="cursed diary background image"
-          className="w-full h-[40vh] rounded-sm object-cover border border-white border-opacity-20"
+          placeholder="blur"
+          blurDataURL={assets.blur_img}
+          className="h-full object-cover w-full "
         />
-        <figcaption className="caption">
-          Come on buddy, the woods are calling you.
-        </figcaption>
-      </figure>
+        <div className="bg-gradient-to-b from-transparent to-theme-bg absolute inset-0  w-full" />
+      </div>
+      <div className="z-10 flex flex-col gap-2">
+        <span className="w-fit ">WELCOME TO,</span>
+        <h1 className="text-4xl font-bold text-yellow-300 ">Cursed Diary.</h1>
+        <span className="text-gray-400 ">{staticText.home1}</span>
+      </div>
     </div>
   );
 }
