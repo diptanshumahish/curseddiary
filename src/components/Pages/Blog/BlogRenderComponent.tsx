@@ -9,7 +9,7 @@ import { Calendar, Clock, Mail } from "lucide-react";
 import ReadTimeClient from "./ReadTimeClient";
 import MorePosts from "@/components/common/MorePosts";
 export default async function BlogRenderComponent(props: ServerProps<"id">) {
-  const [blog, { title, url, desc, date, user, aboutAuthor, tags }] =
+  const [blog, { title, url, desc, date, user, aboutAuthor, tags, type }] =
     await Promise.all([getBlog(props.params.id), getBlogData(props.params.id)]);
 
   return (
@@ -62,7 +62,7 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
           </a>
         </div>
       </div>
-      <MorePosts tag={tags} />
+      <MorePosts type={type} tag={tags} />
     </div>
   );
 }
