@@ -7,8 +7,9 @@ import RenderBlock from "@/components/NotionRender/RenderBlock";
 import moment from "moment";
 import { Calendar, Clock, Mail } from "lucide-react";
 import ReadTimeClient from "./ReadTimeClient";
+import MorePosts from "@/components/common/MorePosts";
 export default async function BlogRenderComponent(props: ServerProps<"id">) {
-  const [blog, { title, url, desc, date, user, aboutAuthor }] =
+  const [blog, { title, url, desc, date, user, aboutAuthor, tags }] =
     await Promise.all([getBlog(props.params.id), getBlogData(props.params.id)]);
 
   return (
@@ -61,6 +62,7 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
           </a>
         </div>
       </div>
+      <MorePosts tag={tags} />
     </div>
   );
 }

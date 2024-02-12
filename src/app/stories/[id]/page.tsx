@@ -7,7 +7,7 @@ export async function generateMetadata(
   props: ServerProps<"id">
 ): Promise<Metadata> {
   const [_, blog_id] = decodeURIComponent(props.params.id).split("__");
-  const [blog, { title, url, tags, user, desc }] = await Promise.all([
+  const [blog, { title, url, user, desc }] = await Promise.all([
     getBlog(blog_id),
     getBlogData(blog_id),
   ]);
@@ -20,14 +20,14 @@ export async function generateMetadata(
       description: desc,
       authors: user.name,
       countryName: "IN",
-      siteName: "https://www.fyipen.com",
+      siteName: "https://curseddiary.vercel.app",
     },
     metadataBase: new URL("https://curseddiary.vercel.app"),
     description: desc,
-    keywords: `${title}, Fyipen, Fyipen blogs`,
+    keywords: `${title}, Cursed Diary, Cursed Diary blogs`,
     category: "Blogs",
     creator: user.name,
-    publisher: "Fyipen",
+    publisher: "Cursed Diary",
     robots: "index,follow",
     twitter: {
       title: title,

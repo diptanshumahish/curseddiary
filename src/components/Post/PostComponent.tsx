@@ -8,12 +8,19 @@ import { Post } from "../services/post";
 
 interface Props {
   post: Post;
+  postType: string;
 }
-export default async function PostComponent({ post }: Props) {
+export default async function PostComponent({ post, postType }: Props) {
   const story_id =
     post.title?.split(" ").join("-").toLowerCase() + "__" + post.id;
+  const genres = post.tags.map((ele) => ele.name);
   return (
-    <Link href={"/stories/" + encodeURIComponent(story_id)} data-type="post">
+    <Link
+      href={"/stories/" + encodeURIComponent(story_id) + `?type=${postType}`}
+      data-type="post"
+      data-genre={genres}
+      data-catagory={postType}
+    >
       <div className="border p-2 overflow-hidden flex  hover:bg-[#ebc99a10] text-white  transition-colors justify-between border-white border-opacity-20 rounded-sm">
         <Image
           src={post.cover ?? assets.blur_img}
@@ -32,10 +39,7 @@ export default async function PostComponent({ post }: Props) {
           <span className="flex flex-wrap gap-1 text-sm">
             {post.tags!.slice(0, 2).map((post, idx) => {
               return (
-                <span
-                  key={idx}
-                  className="border border-white rounded-xs px-2 border-opacity-15 opacity-45 "
-                >
+                <span key={idx} className=" pr-2 opacity-45 ">
                   {post.name}
                 </span>
               );

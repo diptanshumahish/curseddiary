@@ -66,7 +66,10 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
         Displaying {posts?.length} result(s)
       </div>
       <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-6 justify-evenly ">
-        {posts && posts.map((x) => <PostComponent post={x} key={x.id} />)}
+        {posts &&
+          posts.map((x) => (
+            <PostComponent post={x} key={x.id} postType="real" />
+          ))}
       </div>
     </div>
   );

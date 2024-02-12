@@ -11,7 +11,7 @@ export default async function Recommended() {
       <div className="grid lg:grid-cols-3 md:grid-cols-2  lg:gap-4 gap-2 lg:py-[2%]">
         {posts &&
           posts.slice(0, 3).map((ele, idx) => {
-            return <PostComponent post={ele} key={idx} />;
+            return <PostComponent postType="story" post={ele} key={idx} />;
           })}
         {posts?.length === 0 && <div>Loading</div>}
       </div>

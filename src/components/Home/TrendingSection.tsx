@@ -19,7 +19,7 @@ export default async function TrendingSection() {
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-4 gap-2 lg:py-[2%]">
         {trending &&
           trending.slice(0, 4).map((ele, idx) => {
-            return <PostComponent post={ele} key={idx} />;
+            return <PostComponent post={ele} key={idx} postType="story" />;
           })}
         {trending?.length === 0 && <div>Loading</div>}
       </div>
