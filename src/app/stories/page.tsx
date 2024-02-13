@@ -51,20 +51,36 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
         <a href="/stories#stories">
           <span
             className={
-              TAGS.default + (activeTag === 0 ? TAGS.active : TAGS.inactive)
+              "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  " +
+              (activeTag === 0 ? TAGS.active : TAGS.inactive)
             }
           >
             All
           </span>
         </a>
         {tags.map((tag, index) => {
-          if (tag.name !== "featured") {
+          if (tag.name !== "featured" && activeTag === index + 1) {
             return (
               <a href={"/stories?tag=" + tag.name + "#stories"} key={tag.id}>
                 <span
                   className={
-                    TAGS.default +
-                    (activeTag === index + 1 ? TAGS.active : TAGS.inactive)
+                    "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  " +
+                    TAGS.active
+                  }
+                >
+                  {capitaliseFirst(tag.name)}
+                </span>
+              </a>
+            );
+          }
+        })}
+        {tags.map((tag, index) => {
+          if (tag.name !== "featured" && activeTag !== index + 1) {
+            return (
+              <a href={"/stories?tag=" + tag.name + "#stories"} key={tag.id}>
+                <span
+                  className={
+                    "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  "
                   }
                 >
                   {capitaliseFirst(tag.name)}
