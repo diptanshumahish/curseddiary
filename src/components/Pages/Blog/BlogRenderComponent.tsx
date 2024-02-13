@@ -62,7 +62,7 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
           </a>
         </div>
       </div>
-      <MorePosts type={type} tag={tags} />
+      <MorePosts type={type} tag={tags} active_id={props.params.id} />
     </div>
   );
 }

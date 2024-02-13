@@ -6,8 +6,9 @@ import Link from "next/link";
 interface Props {
   tag: string[];
   type: string;
+  active_id: string;
 }
-export default async function MorePosts({ tag, type }: Props) {
+export default async function MorePosts({ tag, type, active_id }: Props) {
   const nc = new NotionClient();
   const posts =
     (await nc.getPosts(type === "real" ? true : false, 0, tag[0])) ?? [];
@@ -25,9 +26,11 @@ export default async function MorePosts({ tag, type }: Props) {
         </span>
       </div>
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-4 gap-2 lg:py-[2%] ">
-        {posts.slice(0, 4).map((ele, idx) => (
-          <PostComponent post={ele} postType="real" key={idx} />
-        ))}
+        {posts.slice(0, 4).map((ele, idx) => {
+          if (ele.id !== active_id) {
+            return <PostComponent post={ele} postType="real" key={idx} />;
+          }
+        })}
       </div>
     </div>
   );
