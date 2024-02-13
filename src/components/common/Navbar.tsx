@@ -8,7 +8,10 @@ export default function Navbar() {
   const [size, setSize] = useState("0vh");
   return (
     <>
-      <nav className="px-[5%] text-white bg-theme-bg py-2 flex justify-between items-center sticky top-0 border-b border-white border-opacity-10 z-20">
+      <nav
+        style={{ backdropFilter: "blur(10px)" }}
+        className="px-[5%] text-white bg-theme-bg bg-opacity-80  py-2 flex justify-between items-center sticky top-0 border-b border-white border-opacity-10 z-20"
+      >
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/assets/logo.png"

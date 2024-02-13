@@ -10,18 +10,21 @@ export default function Featured({ post }: { post: Post }) {
   const blog_id =
     post.title?.split(" ").join("-").toLowerCase() + "__" + post.id;
   return (
-    <div className="p-4  w-full h-[40%] border border-white hover:bg-[#ebc99a10] transition-colors border-opacity-40 rounded-sm  ">
+    <div className="  w-full h-[30%] flex flex-col gap-4   ">
+      <div className="flex flex-col">
+        <span className="text-2xl text-blue-200">Featured writeup ✒️</span>
+        <span className="text-xs opacity-70 text-white">
+          (Updates frequently, so keep an eye over here)
+        </span>
+      </div>
       <Link
         href={"/stories/" + encodeURIComponent(blog_id)}
-        className=" text-white flex flex-col gap-2"
+        className=" text-white border  hover:bg-[#ebc99a10] transition-colors border-opacity-40 rounded-sm  pl-4 border-white flex flex-col gap-2"
       >
-        <h2 className="lg:text-xl text-lg  font-bold text-white p-2 py-1 text-center rounded-sm">
-          Featured writeup
-        </h2>
-        <hr className="opacity-40" />
         <div className="flex lg:flex-row flex-col-reverse lg:gap-0 gap-4 justify-between items-center">
           <div className="flex flex-col gap-4 lg:max-w-[60%]">
             <h1 className="lg:text-3xl md:text-2xl text-xl">{post.title}</h1>
+
             <hr />
             <div className="flex flex-col gap-1">
               <span className="text-xs opacity-30">About the story</span>
@@ -32,7 +35,7 @@ export default function Featured({ post }: { post: Post }) {
               <span className="text-xs opacity-30">
                 When was this story written?
               </span>
-              {moment(post.last_edited_time).format("D MMMM YYYY")}
+              {moment(post.created_time).format("D MMMM YYYY")}
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-xs opacity-30">
@@ -57,7 +60,7 @@ export default function Featured({ post }: { post: Post }) {
             alt={post.title ?? "Image"}
             height={300}
             width={200}
-            className="lg:w-[30%] w-full h-auto aspect-[4/3] object-cover border border-white border-opacity-40 rounded-sm"
+            className="lg:w-[30%] w-full h-auto aspect-[4/3] object-cover border-l border-white border-opacity-40 rounded-sm"
           />
         </div>
       </Link>

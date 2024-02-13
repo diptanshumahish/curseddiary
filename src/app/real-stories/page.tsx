@@ -28,9 +28,14 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
   return (
     <div className="px-[5%] flex flex-col gap-4 py-[3%] w-full">
       <RealTop />
-
+      <div className="flex flex-col">
+        <span className="text-yellow-100">Country wise organized content </span>
+        <span className="text-xs text-white opacity-50">
+          (scroll to see more tags if they are clipping)
+        </span>
+      </div>
       <div
-        className="flex gap-4 flex-wrap py-2 text-white overflow-x-scroll"
+        className="flex gap-4  py-2 text-white overflow-x-scroll"
         id="stories"
       >
         <a href="/real-stories#stories">

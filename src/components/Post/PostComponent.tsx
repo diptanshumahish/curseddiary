@@ -10,6 +10,7 @@ interface Props {
   post: Post;
   postType: string;
 }
+
 export default async function PostComponent({ post, postType }: Props) {
   const story_id =
     post.title?.split(" ").join("-").toLowerCase() + "__" + post.id;
@@ -30,7 +31,7 @@ export default async function PostComponent({ post, postType }: Props) {
           className="w-[40%] h-auto aspect-[9/16] object-cover border border-white border-opacity-40 rounded-sm"
         />
         <div className="w-[55%] h-full flex flex-col gap-2">
-          <h3 className="text-lg ">{post.title}</h3>
+          <h3 className="text-lg line-clamp-2 ">{post.title}</h3>
           <hr className="opacity-40" />
           <span className="h-[45%] opacity-50 text-sm w-full text-ellipsis overflow-hidden line-clamp-4">
             {post.desc}
@@ -39,7 +40,10 @@ export default async function PostComponent({ post, postType }: Props) {
           <span className="flex flex-wrap gap-1 text-sm">
             {post.tags!.slice(0, 2).map((post, idx) => {
               return (
-                <span key={idx} className=" pr-2 opacity-45 ">
+                <span
+                  key={idx}
+                  className="flex items-center gap-1 pr-2  text-yellow-100 "
+                >
                   {post.name}
                 </span>
               );
