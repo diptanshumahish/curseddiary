@@ -45,7 +45,7 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
         </span>
       </div>
       <div
-        className="flex gap-4 py-2 text-white overflow-x-scroll"
+        className="flex gap-4 py-2 text-white overflow-x-scroll no-scrollbar"
         id="stories"
       >
         <a href="/stories#stories">

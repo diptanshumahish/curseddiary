@@ -6,8 +6,6 @@ import RealTop from "@/components/real/RealTop";
 
 const nc = new NotionClient();
 const TAGS = {
-  default:
-    "text-md border border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  ",
   active: "bg-white text-black hover:bg-opacity-80  active:bg-opacity-20  ",
   inactive: "text-white",
 };
@@ -35,13 +33,14 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
         </span>
       </div>
       <div
-        className="flex gap-4  py-2 text-white overflow-x-scroll"
+        className="flex gap-4  py-2 text-white overflow-x-scroll no-scrollbar"
         id="stories"
       >
         <a href="/real-stories#stories">
           <span
             className={
-              TAGS.default + (activeTag === 0 ? TAGS.active : TAGS.inactive)
+              "text-md border flex items-center  border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  " +
+              (activeTag === 0 ? TAGS.active : TAGS.inactive)
             }
           >
             All
@@ -56,7 +55,7 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
               >
                 <span
                   className={
-                    TAGS.default +
+                    "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  " +
                     (activeTag === index + 1 ? TAGS.active : TAGS.inactive)
                   }
                 >
