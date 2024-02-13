@@ -15,7 +15,7 @@ export default function Navbar() {
         }}
         className="px-[5%] text-white bg-theme-bg bg-opacity-80  py-2 flex justify-between items-center sticky top-0 border-b border-white border-opacity-10 z-20"
       >
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 py-1">
           <Image
             src="/assets/logo.png"
             height={35}

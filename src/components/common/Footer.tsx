@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <div className="px-[5%] text-white py-[2%] border-t border-white flex lg:flex-row flex-col justify-between lg:items-center border-opacity-10 lg:gap-0 gap-6">
-      <div className="flex items-center  gap-4">
+      <div className="flex items-center py-2  gap-4">
         <Image
           src="/assets/logo.png"
           height={95}
