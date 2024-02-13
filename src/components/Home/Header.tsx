@@ -13,11 +13,12 @@ function getRandomNumber(maxRange: number) {
   return Math.floor(Math.random() * (maxRange + 1));
 }
 export default function Header() {
+  const ind = getRandomNumber(2) ?? 0;
   return (
     <div className="w-full relative lg:h-[60vh] h-[90vh] overflow-hidden px-[5%] pb-[2%] text-white flex-col flex justify-end">
       <div className="left-0 right-0 top-0  absolute w-full h-[60vh]">
         <Image
-          src={images[getRandomNumber(images.length)]}
+          src={images[ind]}
           alt="home background"
           height={600}
           width={1920}
