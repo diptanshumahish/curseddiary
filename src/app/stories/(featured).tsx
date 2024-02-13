@@ -19,7 +19,7 @@ export default function Featured({ post }: { post: Post }) {
       </div>
       <Link
         href={"/stories/" + encodeURIComponent(blog_id)}
-        className=" text-white border  hover:bg-[#ebc99a10] transition-colors border-opacity-40 rounded-sm  pl-4 border-white flex flex-col gap-2"
+        className=" text-white border  hover:bg-[#ebc99a10] transition-colors border-opacity-40 rounded-sm  lg:pl-4 p-2 border-white flex flex-col gap-2"
       >
         <div className="flex lg:flex-row flex-col-reverse lg:gap-0 gap-4 justify-between items-center">
           <div className="flex flex-col gap-4 lg:max-w-[60%]">
@@ -60,7 +60,7 @@ export default function Featured({ post }: { post: Post }) {
             alt={post.title ?? "Image"}
             height={300}
             width={200}
-            className="lg:w-[30%] w-full h-auto aspect-[4/3] object-cover border-l border-white border-opacity-40 rounded-sm"
+            className="lg:w-[30%] w-full h-auto aspect-[4/3] object-cover lg:border-l border border-white border-opacity-40 rounded-sm"
           />
         </div>
       </Link>
