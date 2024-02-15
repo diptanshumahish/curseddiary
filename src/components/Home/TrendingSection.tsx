@@ -6,7 +6,8 @@ import { staticText } from "@/constant/staticText";
 
 export default async function TrendingSection() {
   const nc = new NotionClient();
-  const trending = await nc.getPosts(false, 0, "featured");
+  const posts = await nc.getPosts(false, 0, "featured");
+  const trending = posts.posts ?? [];
   return (
     <div className="px-[5%]   pb-[3%] flex flex-col gap-2 text-white  ">
       <div className="w-full lg:py-4 lg:pb-6 py-8 justify-center flex items-center flex-col gap-4 ">

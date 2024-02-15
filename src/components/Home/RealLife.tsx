@@ -7,7 +7,8 @@ import { staticText } from "@/constant/staticText";
 
 export default async function RealLife() {
   const nc = new NotionClient();
-  const rPosts = await nc.getPosts(true, 0, "");
+  const posts = await nc.getPosts(true, 0, "");
+  const rPosts = posts.posts;
   return (
     <div
       id="reallife"

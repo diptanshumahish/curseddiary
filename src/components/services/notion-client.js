@@ -1,14 +1,9 @@
-import { Client, isFullPage, isNotionClientError } from "@notionhq/client";
-import {
-  PageObjectResponse,
-  SelectPropertyItemObjectResponse,
-} from "@notionhq/client/build/src/api-endpoints";
+import { Client, isFullPage, isNotionClientError, } from "@notionhq/client";
 
 export default class NotionClient {
   #secret = process.env.NOTION_DATABASE_SECRET;
   #dbId = process.env.NOTION_DATABASE_ID;
   #rId = process.env.NOTION_REALLIFE_ID;
-  #client;
 
   constructor() {
     this.client = new Client({
@@ -27,7 +22,7 @@ export default class NotionClient {
     } catch (error) {
       console.error(error);
       if (isNotionClientError(error)) {
-        // bake some hash brownies later
+        
       }
     }
   }
@@ -36,20 +31,21 @@ export default class NotionClient {
     try {
       if (!this.#rId) return;
       const response = await this.client.databases.query({
-        database_id: this.#rId,
+        database_id: this.#rId
       });
 
       return response.results;
     } catch (error) {
       console.error(error);
       if (isNotionClientError(error)) {
-        // bake some hash brownies later
+        
       }
     }
   }
 
   async getTags(reallife) {
-    const posts = await this.getPosts(reallife);
+    const postData = await this.getPosts(reallife);
+    const posts = postData.posts;
     if (!posts) return [];
 
     let tags = [];
@@ -120,31 +116,35 @@ export default class NotionClient {
         },
       });
       const database = response.results;
-      let posts = [];
-
-      for (let index = 0; index < database.length; index++) {
-        const element = database[index];
-        if (!isFullPage(element)) continue;
-        const column = NotionClient.getColumns(element);
-        const post = {
-          id: element.id,
-          url: element.url,
-          created_time: element.created_time,
-          last_edited_time: element.last_edited_time,
-
-          ...column,
-        };
-
-        posts = [...posts, post];
-      }
-
-      return posts;
+          let posts = [];
+    
+          for (let index = 0; index < database.length; index++) {
+            const element = database[index];
+            if (!isFullPage(element)) continue;
+            const column = NotionClient.getColumns(element);
+            const post = {
+              id: element.id,
+              url: element.url,
+              created_time: element.created_time,
+              last_edited_time: element.last_edited_time,
+    
+              ...column,
+            };
+    
+            posts = [...posts, post];
+          }
+      const hasMore = response.has_more; 
+      const nextCursor = response.next_cursor; 
+  
+      return { posts, hasMore, nextCursor }; 
     } catch (error) {
       console.error(error);
       if (isNotionClientError(error)) {
+        // Handle Notion-specific errors
       }
     }
   }
+  
 
   async getPage(page_id) {
     try {

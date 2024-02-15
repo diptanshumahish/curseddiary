@@ -24,11 +24,12 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
       ? 0
       : tags.map((x) => x.name).indexOf(props.searchParams.tag) + 1;
 
-  const posts = await nc.getPosts(
+  const postData = await nc.getPosts(
     false,
     0,
     activeTag === 0 ? "" : tags[activeTag - 1].name
   );
+  const posts = postData.posts ?? [];
 
   return (
     <div className="px-[5%] flex flex-col gap-4 py-[3%] w-full">
