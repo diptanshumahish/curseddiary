@@ -5,6 +5,8 @@ import { capitaliseFirst } from "@/components/services/strings";
 import Featured from "./(featured)";
 import StoryTop from "@/components/stories/StoryTop";
 import { randomInteger } from "@/components/services/random";
+import { Suspense } from "react";
+import { Loader2 } from "lucide-react";
 
 const nc = new NotionClient();
 const TAGS = {
@@ -34,72 +36,74 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
   return (
     <div className="px-[5%] flex flex-col gap-4 py-[3%] w-full">
       <StoryTop />
-      {featured?.[0] && (
-        <div className="py-6">
-          <Featured post={featured?.[randomInteger(featured.length)]} />
-        </div>
-      )}
-      <div className="flex flex-col">
-        <span className="text-yellow-100">Content type based tags</span>
-        <span className="text-xs text-white opacity-50">
-          (scroll to see more tags if they are clipping)
-        </span>
-      </div>
-      <div
-        className="flex gap-4 py-2 text-white overflow-x-scroll no-scrollbar"
-        id="stories"
-      >
-        <a href="/stories#stories">
-          <span
-            className={
-              "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  " +
-              (activeTag === 0 ? TAGS.active : TAGS.inactive)
-            }
-          >
-            All
+      <Suspense fallback={<Loader2 />}>
+        {featured?.[0] && (
+          <div className="py-6">
+            <Featured post={featured?.[randomInteger(featured.length)]} />
+          </div>
+        )}
+        <div className="flex flex-col">
+          <span className="text-yellow-100">Content type based tags</span>
+          <span className="text-xs text-white opacity-50">
+            (scroll to see more tags if they are clipping)
           </span>
-        </a>
-        {tags.map((tag, index) => {
-          if (tag.name !== "featured" && activeTag === index + 1) {
-            return (
-              <a href={"/stories?tag=" + tag.name + "#stories"} key={tag.id}>
-                <span
-                  className={
-                    "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  " +
-                    TAGS.active
-                  }
-                >
-                  {capitaliseFirst(tag.name)}
-                </span>
-              </a>
-            );
-          }
-        })}
-        {tags.map((tag, index) => {
-          if (tag.name !== "featured" && activeTag !== index + 1) {
-            return (
-              <a href={"/stories?tag=" + tag.name + "#stories"} key={tag.id}>
-                <span
-                  className={
-                    "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  "
-                  }
-                >
-                  {capitaliseFirst(tag.name)}
-                </span>
-              </a>
-            );
-          }
-        })}
-      </div>
-      <div className="py-2 text-white text-md">
-        Displaying {posts?.length} result(s)
-      </div>
-      <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-6 justify-evenly ">
-        {posts &&
-          posts.map((x) => (
-            <PostComponent postType="story" post={x} key={x.id} />
-          ))}
-      </div>
+        </div>
+        <div
+          className="flex gap-4 py-2 text-white overflow-x-scroll no-scrollbar"
+          id="stories"
+        >
+          <a href="/stories#stories">
+            <span
+              className={
+                "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  " +
+                (activeTag === 0 ? TAGS.active : TAGS.inactive)
+              }
+            >
+              All
+            </span>
+          </a>
+          {tags.map((tag, index) => {
+            if (tag.name !== "featured" && activeTag === index + 1) {
+              return (
+                <a href={"/stories?tag=" + tag.name + "#stories"} key={tag.id}>
+                  <span
+                    className={
+                      "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  " +
+                      TAGS.active
+                    }
+                  >
+                    {capitaliseFirst(tag.name)}
+                  </span>
+                </a>
+              );
+            }
+          })}
+          {tags.map((tag, index) => {
+            if (tag.name !== "featured" && activeTag !== index + 1) {
+              return (
+                <a href={"/stories?tag=" + tag.name + "#stories"} key={tag.id}>
+                  <span
+                    className={
+                      "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  "
+                    }
+                  >
+                    {capitaliseFirst(tag.name)}
+                  </span>
+                </a>
+              );
+            }
+          })}
+        </div>
+        <div className="py-2 text-white text-md">
+          Displaying {posts?.length} result(s)
+        </div>
+        <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-6 justify-evenly ">
+          {posts &&
+            posts.map((x) => (
+              <PostComponent postType="story" post={x} key={x.id} />
+            ))}
+        </div>
+      </Suspense>
     </div>
   );
 }

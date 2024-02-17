@@ -5,9 +5,10 @@ import styles from "../../../styles/blog.module.css";
 import assets from "@/components/services/assets";
 import RenderBlock from "@/components/NotionRender/RenderBlock";
 import moment from "moment";
-import { Calendar, Clock, Mail } from "lucide-react";
+import { Calendar, Clock, Loader2, Mail } from "lucide-react";
 import ReadTimeClient from "./ReadTimeClient";
 import MorePosts from "@/components/common/MorePosts";
+import { Suspense } from "react";
 export default async function BlogRenderComponent(props: ServerProps<"id">) {
   const [blog, { title, url, desc, date, user, aboutAuthor, tags, type }] =
     await Promise.all([getBlog(props.params.id), getBlogData(props.params.id)]);
@@ -62,7 +63,9 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
           </a>
         </div>
       </div>
-      <MorePosts type={type} tag={tags} active_id={props.params.id} />
+      <Suspense fallback={<Loader2 />}>
+        <MorePosts type={type} tag={tags} active_id={props.params.id} />
+      </Suspense>
     </div>
   );
 }
