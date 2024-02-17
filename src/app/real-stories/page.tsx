@@ -27,7 +27,7 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
   const posts = postsData.posts ?? [];
 
   return (
-    <div className="px-[5%] flex flex-col gap-4 py-[3%] w-full">
+    <div className="px-[5%] flex flex-col gap-4 pb-[3%] w-full">
       <RealTop />
       <div className="flex flex-col">
         <span className="text-yellow-100">Country wise organized content </span>

@@ -1,6 +1,6 @@
 # Important
 
-cover image : (leave if you want us tp add one)
+cover image : (leave if you want us to add one)
 ![Your Image Description here, necessary](https://images.unsplash.com/photo-1571917368822-5f6625c223b2?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb)
 main heading : provide file name here
 

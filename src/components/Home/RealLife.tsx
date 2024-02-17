@@ -25,6 +25,7 @@ export default async function RealLife() {
       <span className="md:py-0 py-4">{staticText.reallifeHome}</span>
       <figure className="pointer-events-none">
         <Image
+          unoptimized
           src="/back/back2.webp"
           height={1280}
           width={1920}

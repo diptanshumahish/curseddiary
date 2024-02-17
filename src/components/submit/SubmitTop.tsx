@@ -27,6 +27,7 @@ export default function SubmitTop() {
       </div>
       <div className="flex lg:gap-6 justify-between lg:w-[40%] h-full">
         <Image
+          unoptimized
           src="/submitimages/s1.webp"
           height={500}
           width={300}
@@ -34,19 +35,13 @@ export default function SubmitTop() {
           className="object-cover lg:w-[50%] w-[45%] h-full aspect-[8/16] border border-white border-opacity-10"
         />
         <Image
+          unoptimized
           src="/submitimages/s2.webp"
           height={500}
           width={300}
           alt="Submit images"
           className="object-cover lg:w-[50%] w-[45%] h-auto aspect-[8/16] border border-white border-opacity-10"
         />
-        {/* <Image
-          src="/submitimages/s2.webp"
-          height={500}
-          width={300}
-          alt="Submit images"
-          className="object-cover w-[33%] h-auto aspect-[9/16]"
-        /> */}
       </div>
     </div>
   );

@@ -18,6 +18,7 @@ export default function Header() {
     <div className="w-full relative lg:h-[60vh] h-[90vh] overflow-hidden px-[5%] pb-[2%] text-white flex-col flex justify-end">
       <div className="left-0 right-0 top-0  absolute w-full h-[60vh]">
         <Image
+          unoptimized
           src={images[ind]}
           alt="home background"
           height={600}

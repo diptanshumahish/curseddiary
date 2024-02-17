@@ -17,6 +17,7 @@ export default function Navbar() {
       >
         <Link href="/" className="flex items-center gap-2 py-1">
           <Image
+            unoptimized
             src="/assets/logo.png"
             height={35}
             width={35}

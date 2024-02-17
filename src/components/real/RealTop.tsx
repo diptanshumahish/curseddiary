@@ -8,6 +8,7 @@ export default function RealTop() {
     <div className="w-full relative lg:h-[60vh] h-[60vh] overflow-hidden pr-[5%] pb-[2%] text-white flex-col flex justify-end">
       <div className="left-0 right-0 top-0  absolute w-full h-[60vh]">
         <Image
+          unoptimized
           src="/back/folk.webp"
           alt="home background"
           height={600}
@@ -16,7 +17,6 @@ export default function RealTop() {
           blurDataURL={assets.blur_img}
           className="h-full object-cover w-full "
         />
-        <div className="bg-gradient-to-t from-transparent from-20%  to-theme-bg absolute inset-0  w-full" />
         <div className="bg-gradient-to-b from-transparent from-20%  to-theme-bg absolute inset-0  w-full" />
         <div className="bg-gradient-to-l from-transparent from-20%  to-theme-bg absolute inset-0  w-full" />
         <div className="bg-gradient-to-r from-transparent from-20%  to-theme-bg absolute inset-0  w-full" />

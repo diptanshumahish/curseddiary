@@ -23,6 +23,7 @@ export default function MenuDropDown({ height, onC }: Props) {
         <div className="lg:flex hidden flex-col lg:w-[30%] justify-between h-full">
           <div className="flex  items-center   gap-4">
             <Image
+              unoptimized
               src="/assets/logo.png"
               height={95}
               width={95}

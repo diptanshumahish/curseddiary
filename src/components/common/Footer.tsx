@@ -7,6 +7,7 @@ export default function Footer() {
     <div className="px-[5%] text-white py-[2%] border-t border-white flex lg:flex-row flex-col justify-between lg:items-center border-opacity-10 lg:gap-0 gap-6">
       <div className="flex items-center lg:py-2 py-4  gap-4">
         <Image
+          unoptimized
           src="/assets/logo.png"
           height={95}
           width={95}

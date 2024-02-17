@@ -34,7 +34,7 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
   const posts = postData.posts ?? [];
 
   return (
-    <div className="px-[5%] flex flex-col gap-4 py-[3%] w-full">
+    <div className="px-[5%] flex flex-col gap-4 pb-[3%] w-full">
       <StoryTop />
       <Suspense fallback={<Loader2 />}>
         {featured?.[0] && (

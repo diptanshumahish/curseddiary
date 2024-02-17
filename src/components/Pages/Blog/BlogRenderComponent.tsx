@@ -17,6 +17,7 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
     <div className={styles.blogContainer}>
       <div className="w-full h-[70vh] relative">
         <Image
+          unoptimized
           src={url}
           alt={title}
           height={1080}

@@ -56,6 +56,7 @@ export default function Featured({ post }: { post: Post }) {
             </div>
           </div>
           <Image
+            unoptimized
             src={post.cover ?? assets.blur_img}
             alt={post.title ?? "Image"}
             height={300}

@@ -24,6 +24,7 @@ export default async function PostComponent({ post, postType }: Props) {
     >
       <div className="border p-2 overflow-hidden flex  hover:bg-[#ebc99a10] text-white  transition-colors justify-between border-white border-opacity-20 rounded-sm">
         <Image
+          unoptimized
           src={post.cover ?? assets.blur_img}
           alt={post.title ?? "Image"}
           height={300}

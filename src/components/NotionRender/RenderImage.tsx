@@ -20,6 +20,7 @@ export default async function RenderImage({ block }: Props) {
   return (
     <figure className="pointer-events-none w-full h-auto pb-6 ">
       <Image
+        unoptimized
         blurDataURL={assets.blur_img}
         placeholder="blur"
         src={imageUrl}
