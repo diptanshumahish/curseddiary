@@ -27,6 +27,8 @@ export default async function PostComponent({ post, postType }: Props) {
           src={post.cover ?? assets.blur_img}
           alt={post.title ?? "Image"}
           height={300}
+          blurDataURL={assets.blur_img}
+          placeholder="blur"
           width={200}
           className="w-[40%] h-auto aspect-[9/16] object-cover border border-white border-opacity-40 rounded-sm"
         />

@@ -3,6 +3,8 @@ import { ServerProps } from "../../contracts/ServerComponents";
 import NotionClient from "@/components/services/notion-client";
 import { capitaliseFirst } from "@/components/services/strings";
 import RealTop from "@/components/real/RealTop";
+import { Suspense } from "react";
+import { Loader2 } from "lucide-react";
 
 const nc = new NotionClient();
 const TAGS = {
@@ -47,53 +49,59 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
             All
           </span>
         </a>
-        {tags.map((tag, index) => {
-          if (activeTag === index + 1) {
-            return (
-              <a
-                href={"/real-stories?tag=" + tag.name + "#stories"}
-                key={tag.id}
-              >
-                <span
-                  className={
-                    "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  " +
-                    TAGS.active
-                  }
+        <Suspense fallback={<Loader2 />}>
+          {tags.map((tag, index) => {
+            if (activeTag === index + 1) {
+              return (
+                <a
+                  href={"/real-stories?tag=" + tag.name + "#stories"}
+                  key={tag.id}
                 >
-                  {capitaliseFirst(tag.name)}
-                </span>
-              </a>
-            );
-          }
-        })}
-        {tags.map((tag, index) => {
-          if (activeTag !== index + 1) {
-            return (
-              <a
-                href={"/real-stories?tag=" + tag.name + "#stories"}
-                key={tag.id}
-              >
-                <span
-                  className={
-                    "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  "
-                  }
+                  <span
+                    className={
+                      "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  " +
+                      TAGS.active
+                    }
+                  >
+                    {capitaliseFirst(tag.name)}
+                  </span>
+                </a>
+              );
+            }
+          })}
+        </Suspense>
+        <Suspense fallback={<Loader2 />}>
+          {tags.map((tag, index) => {
+            if (activeTag !== index + 1) {
+              return (
+                <a
+                  href={"/real-stories?tag=" + tag.name + "#stories"}
+                  key={tag.id}
                 >
-                  {capitaliseFirst(tag.name)}
-                </span>
-              </a>
-            );
-          }
-        })}
+                  <span
+                    className={
+                      "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  "
+                    }
+                  >
+                    {capitaliseFirst(tag.name)}
+                  </span>
+                </a>
+              );
+            }
+          })}
+        </Suspense>
       </div>
       <div className="py-2 text-white text-md">
         Displaying {posts?.length} result(s)
       </div>
-      <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-6 justify-evenly ">
-        {posts &&
-          posts.map((x) => (
-            <PostComponent post={x} key={x.id} postType="real" />
-          ))}
-      </div>
+      <Suspense fallback={<Loader2 />}>
+        <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-6 justify-evenly ">
+          {posts &&
+            posts.map((x) => (
+              <PostComponent post={x} key={x.id} postType="real" />
+            ))}
+        </div>
+      </Suspense>
     </div>
   );
 }

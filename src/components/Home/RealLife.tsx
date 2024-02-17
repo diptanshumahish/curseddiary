@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { Suspense } from "react";
 import NotionClient from "../services/notion-client";
 import PostComponent from "../Post/PostComponent";
 import Link from "next/link";
@@ -36,23 +36,36 @@ export default async function RealLife() {
         </figcaption>
       </figure>
       <span>
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-4 gap-2 lg:py-[2%]">
-          {rPosts &&
-            rPosts.slice(0, 4).map((ele, idx) => {
-              return <PostComponent post={ele} key={idx} postType="real" />;
-            })}
-          {rPosts?.length === 0 && <div>Loading</div>}
-        </div>
+        <Suspense key={947} fallback={<p>Loading</p>}>
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-4 gap-2 lg:py-[2%]">
+            {rPosts &&
+              rPosts.slice(0, 4).map((ele, idx) => {
+                return <PostComponent post={ele} key={idx} postType="real" />;
+              })}
+          </div>
+        </Suspense>
         <div className="flex items-center py-4 justify-center w-full">
-          {" "}
-          {rPosts.length > 0 && (
-            <Link
-              className="p-2 border hover:bg-white hover:text-theme-bg transition-colors border-white rounded-md px-6 md:w-fit w-full border-opacity-15"
-              href="/real-stories"
-            >
-              See More
-            </Link>
-          )}
+          <Suspense
+            key={47}
+            fallback={
+              <Link
+                aria-disabled
+                className="p-2 disabled:pointer-events-none disabled:opacity-10 border hover:bg-white hover:text-theme-bg transition-colors border-white rounded-md px-6 md:w-fit w-full border-opacity-15"
+                href="/real-stories"
+              >
+                See More
+              </Link>
+            }
+          >
+            {rPosts.length > 0 && (
+              <Link
+                className="p-2 border hover:bg-white hover:text-theme-bg transition-colors border-white rounded-md px-6 md:w-fit w-full border-opacity-15"
+                href="/real-stories"
+              >
+                See More
+              </Link>
+            )}
+          </Suspense>
         </div>
       </span>
     </div>
