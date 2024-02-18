@@ -9,10 +9,10 @@ export default function SubmitThanks() {
         would love to hear from you. In case you have any questions about
         submisisons then feel free to mail us at{" "}
         <a
-          href="mailto:subissionsforcurseddiary@gmail.com"
+          href="mailto:sumbissionsforcurseddiary@gmail.com"
           className="underline text-white"
         >
-          subissionsforcurseddiary@gmail.com ✨
+          submissionsforcurseddiary@gmail.com ✨
         </a>
       </span>
     </div>
