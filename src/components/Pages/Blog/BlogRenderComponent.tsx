@@ -5,10 +5,11 @@ import styles from "../../../styles/blog.module.css";
 import assets from "@/components/services/assets";
 import RenderBlock from "@/components/NotionRender/RenderBlock";
 import moment from "moment";
-import { Calendar, Clock, Loader2, Mail } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Loader2, Mail } from "lucide-react";
 import ReadTimeClient from "./ReadTimeClient";
 import MorePosts from "@/components/common/MorePosts";
 import { Suspense } from "react";
+import Link from "next/link";
 export default async function BlogRenderComponent(props: ServerProps<"id">) {
   const [blog, { title, url, desc, date, user, aboutAuthor, tags, type }] =
     await Promise.all([getBlog(props.params.id), getBlogData(props.params.id)]);
@@ -16,6 +17,12 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
   return (
     <div className={styles.blogContainer}>
       <div className="w-full h-[70vh] relative">
+        <Link
+          href={type === "real" ? `/real-stories` : `/stories`}
+          className="absolute top-4 left-[5%] text-yellow-100 border-b pointer-events-auto cursor-pointer z-10 flex items-center gap-2"
+        >
+          <ArrowLeft size={16} /> Back
+        </Link>
         <Image
           unoptimized
           src={url}

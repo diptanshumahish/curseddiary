@@ -22,7 +22,7 @@ export default function StoryTop() {
         <div className="bg-gradient-to-r from-transparent from-30%  to-theme-bg absolute inset-0  w-full" />
       </div>
       <div className="z-10 flex flex-col gap-2">
-        <h2 className="text-3xl font-bold text-yellow-300 ">Curated Stories</h2>
+        <h2 className="text-3xl  text-yellow-300 ">Curated Stories</h2>
         <span className="text-gray-400 ">{staticText.curatedStories}</span>
       </div>
     </div>

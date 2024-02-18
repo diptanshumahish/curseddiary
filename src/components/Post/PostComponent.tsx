@@ -31,7 +31,7 @@ export default async function PostComponent({ post, postType }: Props) {
           blurDataURL={assets.blur_img}
           placeholder="blur"
           width={200}
-          className="w-[40%] h-auto aspect-[9/16] object-cover border border-white border-opacity-40 rounded-sm"
+          className="w-[40%] h-auto aspect-[9/16] bg-theme-bg object-cover border border-white border-opacity-40 rounded-sm"
         />
         <div className="w-[55%] h-full flex flex-col gap-2">
           <h3 className="text-lg line-clamp-2 ">{post.title}</h3>
