@@ -47,8 +47,9 @@ export default function Header() {
         <h1 className="text-4xl  text-yellow-300 ">Cursed Diary.</h1>
         <span className="text-gray-400 ">{staticText.home1}</span>
         <span className="italic text-orange-200">
-          Let's have a <span className="text-pink-300">{coolWords[spk]}</span>{" "}
-          👻 {daysOfWeek[date.getDay()]}
+          Let&apos;s have a{" "}
+          <span className="text-pink-300">{coolWords[spk]}</span> 👻{" "}
+          {daysOfWeek[date.getDay()]}
         </span>
       </div>
     </div>
