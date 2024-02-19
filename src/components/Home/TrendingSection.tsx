@@ -7,7 +7,7 @@ import { Loader2 } from "lucide-react";
 
 export default async function TrendingSection() {
   const nc = new NotionClient();
-  const posts = await nc.getPosts(false, 0, "featured");
+  const posts = await nc.getPosts(false, 4, null, "featured");
   const trending = posts.posts ?? [];
   return (
     <div className="px-[5%]   pb-[3%] flex flex-col gap-2 text-white  ">
