@@ -10,7 +10,12 @@ interface Props {
 }
 export default async function MorePosts({ tag, type, active_id }: Props) {
   const nc = new NotionClient();
-  const postData = await nc.getPosts(type === "real" ? true : false, 0, tag[0]);
+  const postData = await nc.getPosts(
+    type === "real" ? true : false,
+    4,
+    null,
+    tag[0]
+  );
   const posts = postData.posts ?? [];
   const more = type === "story" ? "stories" : "real-stories";
   return (
