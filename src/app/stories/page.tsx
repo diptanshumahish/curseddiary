@@ -15,7 +15,9 @@ const TAGS = {
   active: "bg-white text-black hover:bg-opacity-80  active:bg-opacity-20  ",
   inactive: "text-white",
 };
-export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
+export default async function Blogs(
+  props: ServerProps<"", { tag?: string; pageno?: string; strt?: string }>
+) {
   const [tags, featured] = await Promise.all([
     nc.getTags(false),
     nc.getPosts(false, 0, "featured"),
@@ -25,12 +27,29 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
     typeof props.searchParams.tag === "undefined"
       ? 0
       : tags.map((x) => x.name).indexOf(props.searchParams.tag) + 1;
+  const selectedTag =
+    typeof props.searchParams.tag === "undefined"
+      ? null
+      : props.searchParams.tag;
+
+  const page =
+    typeof props.searchParams.pageno === "undefined"
+      ? 1
+      : props.searchParams.pageno;
+  const strt_crsr =
+    typeof props.searchParams.strt === "undefined"
+      ? null
+      : props.searchParams.strt;
+  console.log("cursor in page" + strt_crsr);
+  console.log("page number in page " + page);
 
   const postData = await nc.getPosts(
     false,
-    0,
+    24,
+    strt_crsr,
     activeTag === 0 ? "" : tags[activeTag - 1].name
   );
+
   const posts = postData.posts ?? [];
 
   return (

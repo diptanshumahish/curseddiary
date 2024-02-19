@@ -45,7 +45,7 @@ export default class NotionClient {
 
   async getTags(reallife) {
     const postData = await this.getPosts(reallife);
-    const posts = postData.posts;
+    const posts = typeof postData!==undefined? postData.posts:[];
     if (!posts) return [];
 
     let tags = [];
@@ -92,12 +92,33 @@ export default class NotionClient {
 
     return { title, status, tags, cover, person, desc };
   }
-  async getPosts(reallife, page = 0, ...tag) {
+  async getPosts(reallife, page = 0, strt,...tag) {
+    console.log("start cursor nc client" + strt)
     try {
       if (!this.#dbId) return;
-      const response = await this.client.databases.query({
+      const response =   strt===null? await this.client.databases.query({
         database_id: reallife === false ? this.#dbId : this.#rId,
         page_size: page,
+        filter: {
+          and: [
+            ...tag.map((item) => ({
+              property: "Tags",
+              multi_select: {
+                contains: item ?? "",
+              },
+            })),
+            {
+              property: "Status",
+              status: {
+                equals: "Done",
+              },
+            },
+          ],
+        },
+      }):await  this.client.databases.query({
+        database_id: reallife === false ? this.#dbId : this.#rId,
+        page_size: page,
+       start_cursor:strt,
         filter: {
           and: [
             ...tag.map((item) => ({

@@ -12,16 +12,34 @@ const TAGS = {
   inactive: "text-white",
 };
 
-export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
+export default async function Blogs(
+  props: ServerProps<"", { tag?: string; pageno?: string; strt?: string }>
+) {
   const tags = await nc.getTags(true);
   const activeTag =
     typeof props.searchParams.tag === "undefined"
       ? 0
       : tags.map((x) => x.name).indexOf(props.searchParams.tag) + 1;
 
+  const selectedTag =
+    typeof props.searchParams.tag === "undefined"
+      ? null
+      : props.searchParams.tag;
+
+  const page =
+    typeof props.searchParams.pageno === "undefined"
+      ? 1
+      : props.searchParams.pageno;
+  const strt_crsr =
+    typeof props.searchParams.strt === "undefined"
+      ? null
+      : props.searchParams.strt;
+  console.log("cursor in page" + strt_crsr);
+  console.log("page number in page " + page);
   const postsData = await nc.getPosts(
     true,
-    0,
+    24,
+    strt_crsr,
     activeTag === 0 ? "" : tags[activeTag - 1].name
   );
   const posts = postsData.posts ?? [];
@@ -91,15 +109,44 @@ export default async function Blogs(props: ServerProps<"", { tag?: string }>) {
           })}
         </Suspense>
       </div>
-      <div className="py-2 text-white text-md">
-        Displaying {posts?.length} result(s)
-      </div>
-      <Suspense fallback={<Loader2 />}>
+
+      <Suspense fallback={<Loader2 color="white" className="anim" />}>
         <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-6 justify-evenly ">
           {posts &&
             posts.map((x) => (
               <PostComponent post={x} key={x.id} postType="real" />
             ))}
+        </div>
+        <div className="p-2 border text-white border-white border-opacity-10 mt-6 rounded-md flex items-center justify-center gap-2">
+          {postsData.hasMore && (
+            <div>
+              <a
+                href={
+                  selectedTag === null
+                    ? "/real-stories" + `?strt=${postsData.nextCursor}`
+                    : "/real-stories" +
+                      `?strt=${postsData.nextCursor}&` +
+                      `tag=${selectedTag}`
+                }
+              >
+                Next
+              </a>
+            </div>
+          )}
+          {strt_crsr !== null && (
+            <div>
+              {" "}
+              <a
+                href={
+                  selectedTag === null
+                    ? "/real-stories"
+                    : "/real-stories" + `?tag=${selectedTag}`
+                }
+              >
+                Home
+              </a>{" "}
+            </div>
+          )}
         </div>
       </Suspense>
     </div>

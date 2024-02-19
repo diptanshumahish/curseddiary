@@ -4,8 +4,8 @@ import PostComponent from "../Post/PostComponent";
 
 export default async function Recommended() {
   const nc = new NotionClient();
-  const postData = await nc.getPosts(false, 0, "");
-  const posts = postData.posts ?? [];
+  const postData = await nc.getPosts(false, 0, null, "");
+  const posts = typeof postData !== undefined ? postData.posts : [];
   posts.sort(() => Math.random() - 0.5);
   return (
     <div className="text-white">
