@@ -1,9 +1,10 @@
-import { Client, isFullPage, isNotionClientError, } from "@notionhq/client";
+import { Client, isFullPage, isNotionClientError } from "@notionhq/client";
 
 export default class NotionClient {
   #secret = process.env.NOTION_DATABASE_SECRET;
   #dbId = process.env.NOTION_DATABASE_ID;
   #rId = process.env.NOTION_REALLIFE_ID;
+  #mId = process.env.NOTION_METADATA_ID;
 
   constructor() {
     this.client = new Client({
@@ -22,7 +23,6 @@ export default class NotionClient {
     } catch (error) {
       console.error(error);
       if (isNotionClientError(error)) {
-        
       }
     }
   }
@@ -31,21 +31,20 @@ export default class NotionClient {
     try {
       if (!this.#rId) return;
       const response = await this.client.databases.query({
-        database_id: this.#rId
+        database_id: this.#rId,
       });
 
       return response.results;
     } catch (error) {
       console.error(error);
       if (isNotionClientError(error)) {
-        
       }
     }
   }
 
   async getTags(reallife) {
     const postData = await this.getPosts(reallife);
-    const posts = typeof postData!==undefined? postData.posts:[];
+    const posts = typeof postData !== undefined ? postData.posts : [];
     if (!posts) return [];
 
     let tags = [];
@@ -61,6 +60,38 @@ export default class NotionClient {
     }
 
     return Array.from(tags.values());
+  }
+
+  async getMetadata() {
+    const metadata = {
+      realLife: 0,
+      stories: 0,
+      realpages: 0,
+      storypages: 0,
+    };
+
+    try {
+      if (!this.#mId) return;
+      const res = await this.client.databases.query({
+        database_id: this.#mId,
+      });
+      const data = res.results;
+      metadata.realLife = parseInt(
+        data[1].properties["Value"].rich_text[0].plain_text
+      );
+      metadata.stories = parseInt(
+        data[0].properties["Value"].rich_text[0].plain_text
+      );
+      metadata.realpages =
+        metadata.realLife % 24 === 0
+          ? Math.floor(metadata.realLife / 24)
+          : Math.floor(metadata.realLife / 24) + 1;
+      metadata.storypages =
+        metadata.stories % 24 === 0
+          ? Math.floor(metadata.stories / 24)
+          : Math.floor(metadata.stories / 24) + 1;
+    } catch (error) {}
+    return metadata;
   }
 
   static getColumns(post) {
@@ -88,76 +119,78 @@ export default class NotionClient {
         : post.cover?.file.url || null;
 
     const person = post.properties["Person"];
-    
 
     return { title, status, tags, cover, person, desc };
   }
-  async getPosts(reallife, page = 0, strt,...tag) {
-    console.log("start cursor nc client" + strt)
+  async getPosts(reallife, page = 0, strt, ...tag) {
+    console.log("start cursor nc client" + strt);
     try {
       if (!this.#dbId) return;
-      const response =   strt===null? await this.client.databases.query({
-        database_id: reallife === false ? this.#dbId : this.#rId,
-        page_size: page,
-        filter: {
-          and: [
-            ...tag.map((item) => ({
-              property: "Tags",
-              multi_select: {
-                contains: item ?? "",
+      const response =
+        strt === null
+          ? await this.client.databases.query({
+              database_id: reallife === false ? this.#dbId : this.#rId,
+              page_size: page,
+              filter: {
+                and: [
+                  ...tag.map((item) => ({
+                    property: "Tags",
+                    multi_select: {
+                      contains: item ?? "",
+                    },
+                  })),
+                  {
+                    property: "Status",
+                    status: {
+                      equals: "Done",
+                    },
+                  },
+                ],
               },
-            })),
-            {
-              property: "Status",
-              status: {
-                equals: "Done",
+            })
+          : await this.client.databases.query({
+              database_id: reallife === false ? this.#dbId : this.#rId,
+              page_size: page,
+              start_cursor: strt,
+              filter: {
+                and: [
+                  ...tag.map((item) => ({
+                    property: "Tags",
+                    multi_select: {
+                      contains: item ?? "",
+                    },
+                  })),
+                  {
+                    property: "Status",
+                    status: {
+                      equals: "Done",
+                    },
+                  },
+                ],
               },
-            },
-          ],
-        },
-      }):await  this.client.databases.query({
-        database_id: reallife === false ? this.#dbId : this.#rId,
-        page_size: page,
-       start_cursor:strt,
-        filter: {
-          and: [
-            ...tag.map((item) => ({
-              property: "Tags",
-              multi_select: {
-                contains: item ?? "",
-              },
-            })),
-            {
-              property: "Status",
-              status: {
-                equals: "Done",
-              },
-            },
-          ],
-        },
-      });
+            });
       const database = response.results;
-          let posts = [];
-    
-          for (let index = 0; index < database.length; index++) {
-            const element = database[index];
-            if (!isFullPage(element)) continue;
-            const column = NotionClient.getColumns(element);
-            const post = {
-              id: element.id,
-              url: element.url,
-              created_time: element.created_time,
-              last_edited_time: element.last_edited_time,
-    
-              ...column,
-            };
-    
-            posts = [...posts, post];
-          }
-      const hasMore = response.has_more; 
-      const nextCursor = response.next_cursor; 
-  
-      return { posts, hasMore, nextCursor }; 
+      let posts = [];
+
+      for (let index = 0; index < database.length; index++) {
+        const element = database[index];
+        if (!isFullPage(element)) continue;
+        const column = NotionClient.getColumns(element);
+        const post = {
+          id: element.id,
+          url: element.url,
+          created_time: element.created_time,
+          last_edited_time: element.last_edited_time,
+
+          ...column,
+        };
+
+        posts = [...posts, post];
+      }
+      const hasMore = response.has_more;
+      const nextCursor = response.next_cursor;
+
+      return { posts, hasMore, nextCursor };
     } catch (error) {
       console.error(error);
       if (isNotionClientError(error)) {
@@ -165,7 +198,6 @@ export default class NotionClient {
       }
     }
   }
-  
 
   async getPage(page_id) {
     try {
@@ -192,4 +224,3 @@ export default class NotionClient {
     }
   }
 }
-

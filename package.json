@@ -15,7 +15,8 @@
     "next": "14.0.4",
     "nextjs-toploader": "^1.6.6",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",

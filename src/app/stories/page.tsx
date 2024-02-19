@@ -6,7 +6,8 @@ import Featured from "./(featured)";
 import StoryTop from "@/components/stories/StoryTop";
 import { randomInteger } from "@/components/services/random";
 import { Suspense } from "react";
-import { Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
+import { twMerge } from "tailwind-merge";
 
 const nc = new NotionClient();
 const TAGS = {
@@ -16,7 +17,10 @@ const TAGS = {
   inactive: "text-white",
 };
 export default async function Blogs(
-  props: ServerProps<"", { tag?: string; pageno?: string; strt?: string }>
+  props: ServerProps<
+    "",
+    { tag?: string; pageno?: string; strt?: string; prev?: string }
+  >
 ) {
   const [tags, featured] = await Promise.all([
     nc.getTags(false),
@@ -27,6 +31,7 @@ export default async function Blogs(
     typeof props.searchParams.tag === "undefined"
       ? 0
       : tags.map((x) => x.name).indexOf(props.searchParams.tag) + 1;
+
   const selectedTag =
     typeof props.searchParams.tag === "undefined"
       ? null
@@ -35,13 +40,16 @@ export default async function Blogs(
   const page =
     typeof props.searchParams.pageno === "undefined"
       ? 1
-      : props.searchParams.pageno;
+      : parseInt(props.searchParams.pageno);
   const strt_crsr =
     typeof props.searchParams.strt === "undefined"
       ? null
       : props.searchParams.strt;
-  console.log("cursor in page" + strt_crsr);
-  console.log("page number in page " + page);
+
+  const prevous_cursor =
+    typeof props.searchParams.prev === "undefined"
+      ? null
+      : props.searchParams.prev;
 
   const postData = await nc.getPosts(
     false,
@@ -51,6 +59,10 @@ export default async function Blogs(
   );
 
   const posts = postData.posts ?? [];
+
+  //pagination related stuff
+  const pages = await nc.getMetadata();
+  const maxPages = Array.from({ length: pages.storypages }, (_, i) => i + 1);
 
   return (
     <div className="px-[5%] flex flex-col gap-4 pb-[3%] w-full">
@@ -113,14 +125,66 @@ export default async function Blogs(
             }
           })}
         </div>
-        <div className="py-2 text-white text-md">
-          Displaying {posts?.length} result(s)
-        </div>
+        <div className="py-2 text-white text-md"></div>
         <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-6 justify-evenly ">
           {posts &&
             posts.map((x) => (
               <PostComponent postType="story" post={x} key={x.id} />
             ))}
+        </div>
+        <div className="  text-white mt-6 flex items-center justify-center gap-2 flex-col">
+          <span className="text-xs opacity-30">NAVIGATION</span>
+          <div className="flex flex-wrap text-sm gap-2 items-center">
+            <a
+              className={twMerge(
+                page === 1
+                  ? "cursor-not-allowed pointer-events-none opacity-40"
+                  : "",
+                "bg-white bg-opacity-20 px-2 py-1 hover:bg-opacity-40 transition-opacity  text-white rounded-sm flex items-center gap-2"
+              )}
+              href={
+                "/stories?" +
+                (postData.hasMore ? `strt=${postData.nextCursor}` : "") +
+                (selectedTag === null ? "" : `&tag=${selectedTag}`) +
+                (strt_crsr === null && page === 2 ? "" : `&prev=${strt_crsr}`)
+              }
+            >
+              <ArrowLeft size={16} />
+              Back
+            </a>
+            {maxPages.map((ele, idx) => (
+              <span
+                className={twMerge(
+                  page === idx + 1 ? "bg-white bg-opacity-10" : "",
+                  "border border-white border-opacity-30 px-2 py-1 text-white rounded-sm"
+                )}
+                key={idx}
+              >
+                {ele}
+              </span>
+            ))}
+            <a
+              className={twMerge(
+                postData.hasMore === false
+                  ? "cursor-not-allowed pointer-events-none opacity-40"
+                  : "",
+                "bg-white bg-opacity-20 px-2 py-1 hover:bg-opacity-40 transition-opacity  text-white rounded-sm flex items-center gap-2"
+              )}
+              href={
+                "/stories?" +
+                `strt=${postData.nextCursor}` +
+                (selectedTag === null ? `` : `&tag=${selectedTag}`) +
+                (strt_crsr === null || page === 2 ? "" : `&prev=${strt_crsr}`) +
+                (page === null ? "&pageno=2" : `&pageno=${page + 1}`)
+              }
+            >
+              Next
+              <ArrowRight size={16} />
+            </a>
+          </div>
+          <span className="text-xs text-yellow-300">
+            (clicking on numbers doesnot work as of now 🙂 )
+          </span>
         </div>
       </Suspense>
     </div>
