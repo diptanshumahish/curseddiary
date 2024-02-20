@@ -51,13 +51,14 @@ export default async function PostComponent({ post, postType }: Props) {
           </span>
         </div>
         <span className="flex flex-wrap gap-1 text-sm border-t px-4 py-2 border-white border-opacity-20">
-          {post.tags!.slice(0, 2).map((post, idx) => {
+          {post.tags!.slice(0, 2).map((ele, idx) => {
             return (
               <span
+                style={{ color: `${ele.color}` }}
                 key={idx}
-                className="flex items-center gap-1 pr-2  text-yellow-100 "
+                className="flex items-center gap-1 pr-2"
               >
-                {post.name}
+                {ele.name}
               </span>
             );
           })}

@@ -35,7 +35,7 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
         />
         <div className="bg-gradient-to-b from-transparent to-theme-bg absolute inset-0  w-full" />
         <div className="absolute bottom-[5%] flex flex-col gap-2 left-[5%] lg:left-[10%] lg:right-[10%] right-[5%] text-white">
-          <h1 className="text-4xl">{title}</h1>
+          <h1 className="lg:text-5xl  text-4xl">{title}</h1>
 
           <p className="opacity-60 lg:max-w-[60%]">{desc}</p>
           <div className="flex items-center gap-4">
@@ -51,6 +51,11 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
             <Clock size={18} /> <ReadTimeClient />{" "}
             <span className="opacity-50">to read this</span>
           </div>
+          {type === "real" && (
+            <div className="text-md text-blue-300 opacity-80">
+              Origin country {tags[0]}
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.articleContainer}>

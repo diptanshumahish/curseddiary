@@ -43,7 +43,7 @@ export default async function Header() {
 
         <div className="flex flex-col gap-2 ">
           <span className="lg:px-8 px-3 pt-4">CURSED DIARY SPECIALS</span>
-          <h3 className="lg:text-8xl text-4xl lg:px-8 px-3 ">{fc.title}</h3>
+          <h3 className="lg:text-7xl text-4xl lg:px-8 px-3 ">{fc.title}</h3>
           <span className="text-2xl lg:px-8 px-3 text-pink-300">
             {moment().format("D MMM,YYYY")}
           </span>
