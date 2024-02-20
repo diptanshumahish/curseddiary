@@ -65,7 +65,7 @@ export default async function Blogs(
   const maxPages = Array.from({ length: pages.storypages }, (_, i) => i + 1);
 
   return (
-    <div className="px-[5%] flex flex-col gap-4 pb-[3%] w-full">
+    <div className=" flex flex-col gap-4 pb-[3%] w-full">
       <StoryTop />
       <Suspense fallback={<Loader2 />}>
         {featured?.[0] && (
@@ -73,14 +73,14 @@ export default async function Blogs(
             <Featured post={featured?.[randomInteger(featured.length)]} />
           </div>
         )}
-        <div className="flex flex-col">
+        <div className="flex flex-col px-[5%]">
           <span className="text-yellow-100">Content type based tags</span>
           <span className="text-xs text-white opacity-50">
             (scroll to see more tags if they are clipping)
           </span>
         </div>
         <div
-          className="flex gap-4 py-2 text-white overflow-x-scroll no-scrollbar"
+          className="flex gap-4 py-2 px-[5%] text-white overflow-x-scroll no-scrollbar"
           id="stories"
         >
           <a href="/stories#stories">
@@ -125,8 +125,8 @@ export default async function Blogs(
             }
           })}
         </div>
-        <div className="py-2 text-white text-md"></div>
-        <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  lg:gap-6 gap-8 justify-evenly ">
+
+        <div className="px-[5%] grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  lg:gap-6 gap-8 justify-evenly ">
           {posts &&
             posts.map((x) => (
               <PostComponent postType="story" post={x} key={x.id} />

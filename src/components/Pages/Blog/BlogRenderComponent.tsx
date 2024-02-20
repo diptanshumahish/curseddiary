@@ -16,10 +16,10 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
 
   return (
     <div className={styles.blogContainer}>
-      <div className="w-full h-[70vh] relative">
+      <div className="w-full lg:h-[80vh] h-[70vh] relative">
         <Link
           href={type === "real" ? `/real-stories` : `/stories`}
-          className="absolute top-4 left-[5%] text-yellow-100 border-b pointer-events-auto cursor-pointer z-10 flex items-center gap-2"
+          className="absolute lg:top-[15%] top-[12%] left-[5%] text-yellow-100 border-b pointer-events-auto cursor-pointer z-10 flex items-center gap-2"
         >
           <ArrowLeft size={16} /> Back
         </Link>

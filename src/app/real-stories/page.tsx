@@ -56,16 +56,16 @@ export default async function Blogs(
   const maxPages = Array.from({ length: pages.realpages }, (_, i) => i + 1);
 
   return (
-    <div className="px-[5%] flex flex-col gap-4 pb-[3%] w-full">
+    <div className=" flex flex-col gap-4 pb-[3%] w-full">
       <RealTop />
-      <div className="flex flex-col">
+      <div className="flex flex-col px-[5%]">
         <span className="text-yellow-100">Country wise organized content </span>
         <span className="text-xs text-white opacity-50">
           (scroll to see more tags if they are clipping)
         </span>
       </div>
       <div
-        className="flex gap-4  py-2 text-white overflow-x-scroll no-scrollbar"
+        className="flex gap-4 px-[5%] py-2 text-white overflow-x-scroll no-scrollbar"
         id="stories"
       >
         <a href="/real-stories#stories">
@@ -122,7 +122,7 @@ export default async function Blogs(
       </div>
 
       <Suspense fallback={<Loader2 color="white" className="anim" />}>
-        <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  lg:gap-6 gap-8 justify-evenly ">
+        <div className="px-[5%] grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  lg:gap-6 gap-8 justify-evenly ">
           {posts &&
             posts.map((x) => (
               <PostComponent post={x} key={x.id} postType="real" />
