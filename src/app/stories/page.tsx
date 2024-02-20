@@ -126,7 +126,7 @@ export default async function Blogs(
           })}
         </div>
         <div className="py-2 text-white text-md"></div>
-        <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-6 justify-evenly ">
+        <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  lg:gap-6 gap-8 justify-evenly ">
           {posts &&
             posts.map((x) => (
               <PostComponent postType="story" post={x} key={x.id} />

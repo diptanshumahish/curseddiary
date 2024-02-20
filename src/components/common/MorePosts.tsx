@@ -30,7 +30,7 @@ export default async function MorePosts({ tag, type, active_id }: Props) {
           reading these posts below, till then good luck
         </span>
       </div>
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-4 gap-2 lg:py-[2%] ">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-6 gap-8 lg:py-[2%] ">
         {posts.slice(0, 4).map((ele, idx) => {
           if (ele.id !== active_id) {
             return <PostComponent post={ele} postType="real" key={idx} />;

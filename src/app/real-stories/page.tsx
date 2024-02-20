@@ -122,7 +122,7 @@ export default async function Blogs(
       </div>
 
       <Suspense fallback={<Loader2 color="white" className="anim" />}>
-        <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-6 justify-evenly ">
+        <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  lg:gap-6 gap-8 justify-evenly ">
           {posts &&
             posts.map((x) => (
               <PostComponent post={x} key={x.id} postType="real" />

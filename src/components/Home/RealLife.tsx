@@ -38,7 +38,7 @@ export default async function RealLife() {
       </figure>
       <span>
         <Suspense key={947} fallback={<p>Loading</p>}>
-          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-4 gap-2 lg:py-[2%]">
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-6 gap-8 lg:py-[2%]">
             {rPosts &&
               rPosts.slice(0, 4).map((ele, idx) => {
                 return <PostComponent post={ele} key={idx} postType="real" />;

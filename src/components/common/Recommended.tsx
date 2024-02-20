@@ -9,7 +9,7 @@ export default async function Recommended() {
   posts.sort(() => Math.random() - 0.5);
   return (
     <div className="text-white">
-      <div className="grid lg:grid-cols-3 md:grid-cols-2  lg:gap-4 gap-2 lg:py-[2%]">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2   lg:gap-6 gap-8 lg:py-[2%]">
         {posts &&
           posts.slice(0, 3).map((ele, idx) => {
             return <PostComponent postType="story" post={ele} key={idx} />;

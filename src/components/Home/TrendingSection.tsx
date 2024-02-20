@@ -24,7 +24,7 @@ export default async function TrendingSection() {
       <span className="text-gray-400 md:py-0 py-4">
         {staticText.homeTrending}
       </span>
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-4 gap-2 lg:py-[2%]">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-6 gap-8 lg:py-[2%]">
         <Suspense
           key={1212}
           fallback={
