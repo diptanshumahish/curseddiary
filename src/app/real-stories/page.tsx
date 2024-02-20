@@ -43,8 +43,6 @@ export default async function Blogs(
     typeof props.searchParams.prev === "undefined"
       ? null
       : props.searchParams.prev;
-  console.log("cursor in page" + strt_crsr);
-  console.log("page number in page " + page);
   const postsData = await nc.getPosts(
     true,
     24,

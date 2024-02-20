@@ -62,6 +62,7 @@ export default class NotionClient {
     return Array.from(tags.values());
   }
 
+  //to get story count and stuff
   async getMetadata() {
     const metadata = {
       realLife: 0,
