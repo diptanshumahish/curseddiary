@@ -1,4 +1,3 @@
-"use client";
 import React, { Suspense } from "react";
 import NotionClient from "../services/notion-client";
 import PostComponent from "../Post/PostComponent";

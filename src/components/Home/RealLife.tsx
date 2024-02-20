@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import React, { Suspense } from "react";
 import NotionClient from "../services/notion-client";
