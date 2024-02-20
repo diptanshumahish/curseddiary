@@ -3,7 +3,7 @@ import React from "react";
 
 export default function About() {
   return (
-    <div className="px-[5%] text-white flex flex-col gap-4 ">
+    <div className="lg:px-[10%] px-[5%] text-white flex flex-col gap-4 ">
       <div className="w-full lg:py-4 lg:pb-6 py-8 flex items-center justify-center">
         <img
           className="lg:w-[30%] md:w-[50%] w-full h-auto invert opacity-50"

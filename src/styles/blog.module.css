@@ -4,9 +4,10 @@
 }
 .blogContainer .articleContainer {
   min-width: 900px;
-  padding: 5% 5%;
+  padding: 2% 10%;
   -webkit-font-smoothing: antialiased;
 }
+
 .blogContainer article {
   display: flex;
   align-items: center;
@@ -176,6 +177,7 @@
 @media screen and (max-width: 800px) {
   .blogContainer .articleContainer {
     min-width: 342px;
+    padding: 3% 5%;
     margin: 1rem auto;
   }
   .article img {

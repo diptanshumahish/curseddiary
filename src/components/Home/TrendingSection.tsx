@@ -10,7 +10,7 @@ export default async function TrendingSection() {
   const posts = await nc.getPosts(false, 4, null, "featured");
   const trending = posts.posts ?? [];
   return (
-    <div className="px-[5%]   pb-[3%] flex flex-col gap-2 text-white  ">
+    <div className=" lg:px-[10%] px-[5%] pb-[3%] flex flex-col gap-2 text-white  ">
       <div className="w-full lg:py-4 lg:pb-6 py-8 justify-center flex items-center flex-col gap-4 ">
         <div className="w-[30px] h-[2px] bg-white bg-opacity-25 rounded-md" />
         <img

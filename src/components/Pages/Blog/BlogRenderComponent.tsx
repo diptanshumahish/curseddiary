@@ -19,7 +19,7 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
       <div className="w-full lg:h-[80vh] h-[70vh] relative">
         <Link
           href={type === "real" ? `/real-stories` : `/stories`}
-          className="absolute lg:top-[15%] top-[12%] left-[5%] text-yellow-100 border-b pointer-events-auto cursor-pointer z-10 flex items-center gap-2"
+          className="absolute lg:top-[15%] top-[12%] left-[5%] lg:left-[10%] text-yellow-100 border-b pointer-events-auto cursor-pointer z-10 flex items-center gap-2"
         >
           <ArrowLeft size={16} /> Back
         </Link>
@@ -34,7 +34,7 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
           className="mb-4 w-full h-full object-cover rounded-md"
         />
         <div className="bg-gradient-to-b from-transparent to-theme-bg absolute inset-0  w-full" />
-        <div className="absolute bottom-[5%] flex flex-col gap-2 left-[5%] right-[5%] text-white">
+        <div className="absolute bottom-[5%] flex flex-col gap-2 left-[5%] lg:left-[10%] lg:right-[10%] right-[5%] text-white">
           <h1 className="text-4xl">{title}</h1>
 
           <p className="opacity-60 lg:max-w-[60%]">{desc}</p>
@@ -58,7 +58,7 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
           {blog && <RenderBlock blockMap={blog.results} />}
         </article>
       </div>
-      <div className="px-[5%] pb-[5%] flex flex-col text-white lg:w-[30%]">
+      <div className="px-[5%] lg:px-[10%] pb-[5%] flex flex-col text-white lg:w-[40%]">
         <div className="flex flex-col gap-2">
           <span className="opacity-50">ABOUT AUTHOR</span>
           <span className="text-lg">{user.name}</span>

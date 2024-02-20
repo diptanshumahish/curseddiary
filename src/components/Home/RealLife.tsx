@@ -12,7 +12,7 @@ export default async function RealLife() {
   return (
     <div
       id="reallife"
-      className="w-full px-[5%] py-[5%] text-white flex-col flex gap-4"
+      className="w-full lg:px-[10%] px-[5%] py-[5%] text-white flex-col flex gap-4"
     >
       <div className="w-full lg:py-4 lg:pb-6 py-8 flex items-center justify-center">
         <img

@@ -13,7 +13,7 @@ export default function Navbar() {
           backdropFilter: "blur(10px)",
           WebkitBackdropFilter: "blur(10px)",
         }}
-        className="px-[5%] text-white  py-2 flex justify-between items-center fixed left-0 right-0 top-0 border-b border-white border-opacity-10 z-20"
+        className="lg:px-[10%] px-[5%] text-white  py-2 flex justify-between items-center fixed left-0 right-0 top-0 border-b border-white border-opacity-10 z-20"
       >
         <Link href="/" className="flex items-center gap-2 py-1">
           <Image
