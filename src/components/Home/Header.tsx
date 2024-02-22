@@ -82,6 +82,7 @@ export default async function Header() {
           {featuredPosts.posts.slice(1, 5).map((ele, idx) => {
             return (
               <Link
+                key={idx}
                 href={
                   "/stories/" +
                   encodeURI(
